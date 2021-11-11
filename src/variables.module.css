@@ -1,0 +1,42 @@
+@value primary-text-color: #000000;
+@value accent-color: #4a56e2;
+@value expenditure-text-color: #ff6596;
+@value income-text-color: #24cca7;
+@value white-text-color: #ffffff;
+@value light-text-color-1: #bdbdbd;
+@value light-text-color-2: #e0e0e0;
+@value light-text-color-3: #a6a6a6;
+@value line-color: #dcdcdf;
+
+@value background-color: #e7eaf2;
+@value background-gradient: rgba(255, 255, 255, 0.4);
+@value background-select: rgba(255, 255, 255, 0.7);
+@value background-backdrop: rgba(0, 0, 0, 0.25);
+
+@value statistic-color-1: #fed057;
+@value statistic-color-2: #ffd8d0;
+@value statistic-color-3: #fd9498;
+@value statistic-color-4: #c5baff;
+@value statistic-color-5: #6e78e8;
+@value statistic-color-6: #4a56e2;
+@value statistic-color-7: #81e1ff;
+@value statistic-color-8: #24cca7;
+@value statistic-color-9: #00ad84;
+
+@value font-family-main: 'Poppins', sans-serif;
+@value font-family-secondary: 'Circe', sans-serif;
+
+@value font-weight-regular: 400;
+@value font-weight-bold: 700;
+
+@value font-size-30: 30px;
+@value font-size-24: 24px;
+@value font-size-18: 18px;
+@value font-size-16: 16px;
+@value font-size-12: 12px;
+
+@value timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+@value desktop: 1280px;
+@value tablet: 768px;
+@value mobile: 320px;
