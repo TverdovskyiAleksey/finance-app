@@ -1,8 +1,8 @@
 import { createAction } from '@reduxjs/toolkit';
 
-export const fetchExpenseRequest = createAction('expense/fetchExpenseRequest');
-export const fetchExpenseSuccess = createAction('expense/fetchExpenseSuccess');
-export const fetchExpenseError = createAction('expense/fetchExpenseError');
+// export const fetchExpenseRequest = createAction('expense/fetchExpenseRequest');
+// export const fetchExpenseSuccess = createAction('expense/fetchExpenseSuccess');
+// export const fetchExpenseError = createAction('expense/fetchExpenseError');
 
 export const addExpenseRequest = createAction('expense/addExpenseRequest');
 export const addExpenseSuccess = createAction('expense/addExpenseSuccess');

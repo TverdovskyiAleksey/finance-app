@@ -16,4 +16,5 @@ const getVisibleExpenses = createSelector([getExpenses], (expenses, filter) => {
 export default {
   getLoading,
   getVisibleExpenses,
+  getExpenses,
 };

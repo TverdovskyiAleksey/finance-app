@@ -11,7 +11,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-// import expensesReducer from './expenses/expenses-reducer';
+import expensesReducer from './expenses/expenses-reducer';
 import authSlice from './auth/auth-slice';
 
 const middleware = [
@@ -32,7 +32,7 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authSlice),
-    // expenses: expensesReducer,
+    expenses: expensesReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
