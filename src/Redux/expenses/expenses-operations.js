@@ -1,21 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import {
-  // fetchExpenseRequest,
-  // fetchExpenseSuccess,
-  // fetchExpenseError,
-  addExpenseRequest,
-  addExpenseSuccess,
-  addExpenseError,
-  deleteExpenseError,
-  deleteExpenseRequest,
-  deleteExpenseSuccess,
-} from './expenses-action';
 
 // axios.defaults.baseURL = 'http://localhost:3000';
 
-// eslint-disable-next-line no-unused-vars
-const fetchExpenses = createAsyncThunk(
+export const fetchExpenses = createAsyncThunk(
   'expense/fetchExpense',
   async () => {
     const { data } = await axios.get('/expenses');
@@ -23,28 +11,19 @@ const fetchExpenses = createAsyncThunk(
   }
 )
 
-const addExpense =
-  ({ name, number }) =>
-    async dispatch => {
-      const expense = { name, number };
+export const addExpense = createAsyncThunk(
+  'expense/addExpense',
+  async ({ date, type, category, description, sum }) => {
+    const expense = { date, type, category, description, sum };
+    const { data } = await axios.get('/expenses', expense);
+    return data;
+  }
+)
 
-      dispatch(addExpenseRequest());
-
-      try {
-        const { data } = await axios.post('/expenses', expense);
-        dispatch(addExpenseSuccess(data));
-      } catch (error) {
-        dispatch(addExpenseError(error));
-      }
-    };
-
-const deleteExpense = id => async dispatch => {
-  dispatch(deleteExpenseRequest());
-
-  axios
-    .delete(`/expense/${id}`)
-    .then(() => dispatch(deleteExpenseSuccess(id)))
-    .catch(error => dispatch(deleteExpenseError(error)));
-};
-// eslint-disable-next-line import/no-anonymous-default-export
-export default { addExpense, deleteExpense, fetchExpenses };
+export const deleteExpense = createAsyncThunk(
+  'expense/deleteExpense',
+  async (id) => {
+    await axios.get('/expenses', id);
+    return id;
+  }
+)

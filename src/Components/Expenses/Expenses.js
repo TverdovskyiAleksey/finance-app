@@ -6,9 +6,8 @@ import styles from './Expenses.module.css';
 const Expenses = () => {
 
   const expenses = useSelector(expensesSelectors.getExpenses);
+  const total = useSelector(expensesSelectors.getTotal);
   // const dispatch = useDispatch();
-  let total = 0;
-  // expenses.reduce((acc, item) => acc + item.sum, 0);
 
   // useEffect(() => dispatch(expensesOperations.fetchExpenses()), [dispatch]);
 

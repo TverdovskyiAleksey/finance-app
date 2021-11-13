@@ -1,19 +1,7 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 
-import {
-  addExpenseRequest,
-  addExpenseSuccess,
-  addExpenseError,
-  deleteExpenseError,
-  deleteExpenseRequest,
-  deleteExpenseSuccess,
-  // changeFilter,
-  // fetchExpenseError,
-  // fetchExpenseRequest,
-  // fetchExpenseSuccess,
-} from './expenses-action';
-import fetchExpenses from './expenses-operations';
+import { fetchExpenses, addExpense, deleteExpense } from './expenses-operations';
 
 const transactionList = [
   { id: 'id-1', date: '04.01.2021', type: '+', category: 'Регулярный доход', description: 'Бонус за январь', sum: 8000 },
@@ -27,9 +15,9 @@ const transactionList = [
 
 const items = createReducer(transactionList, {
   [fetchExpenses.fulfilled]: (_, { payload }) => payload,
-  [addExpenseSuccess.fulfilled]: (state, { payload }) => [...state, payload],
-  // [deleteExpenseSuccess]: (state, { payload }) =>
-  //   state.filter(({ id }) => id !== payload),
+  [addExpense.fulfilled]: (state, { payload }) => [...state, payload],
+  [deleteExpense.fulfilled]: (state, { payload }) =>
+    state.filter(({ id }) => id !== payload),
 });
 
 // const filter = createReducer('', {
@@ -40,12 +28,12 @@ const loading = createReducer(false, {
   [fetchExpenses.pending]: () => true,
   [fetchExpenses.fulfilled]: () => false,
   [fetchExpenses.rejected]: () => false,
-  [addExpenseRequest]: () => true,
-  [addExpenseSuccess]: () => false,
-  [addExpenseError]: () => false,
-  [deleteExpenseRequest]: () => true,
-  [deleteExpenseSuccess]: () => false,
-  [deleteExpenseError]: () => false,
+  [addExpense.pending]: () => true,
+  [addExpense.fulfilled]: () => false,
+  [addExpense.rejected]: () => false,
+  [deleteExpense.pending]: () => true,
+  [deleteExpense.fulfilled]: () => false,
+  [deleteExpense.rejected]: () => false,
 });
 
 const error = createReducer(null, {
