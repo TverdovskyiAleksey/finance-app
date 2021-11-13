@@ -1,0 +1,51 @@
+@value styles: '../../../variables.module.css';
+@value background-color,desktop, tablet, font-size-18, font-weight-bold, font-family-secondary, primary-text-color,font-size-30, font-family-main from styles;
+
+body {
+  background-color: background-color;
+}
+
+.chart {
+  margin-bottom: 30px;
+}
+
+.title {
+  font-family: font-family-main;
+  font-weight: normal;
+  font-size: font-size-30;
+  line-height: 1.5;
+  color: primary-text-color;
+  width: fit-content;
+}
+
+.сhartСontainer {
+  position: relative;
+}
+.doughnut canvas {
+  min-width: 320px;
+  min-height: 320px;
+}
+
+.balance {
+  font-family: font-family-secondary;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: font-weight-bold;
+  font-size: font-size-18;
+  line-height: 27px;
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (min-width: tablet) {
+  .title {
+    margin: 0 30px 20px;
+  }
+}
+
+@media screen and (min-width: desktop) {
+  .title {
+    margin-left: 31px;
+    justify-content: space-between;
+  }
+}

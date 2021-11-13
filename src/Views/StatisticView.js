@@ -1,7 +1,8 @@
-const StatisticView = () => (
-  <div>
-    <h1>Welcome statistic</h1>
-  </div>
+import Statistic from '../Components/Statistic/Stats';
+
+const StatisticView = () => (  
+    <Statistic />  
 );
 
 export default StatisticView;
+
