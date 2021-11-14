@@ -16,7 +16,7 @@ const Expenses = () => {
       <div className={styles.balance}>
         Ваш баланс
         <p className={styles.total}>
-          <span className={styles.currency}>₴</span> {total}</p>
+          <span className={styles.currency}>₴</span> {total.toFixed(2)}</p>
       </div>
       <table className={styles.table}>
         <thead className={styles.head}>
