@@ -4,10 +4,6 @@ import Datetime from 'react-datetime';
 import moment from 'moment';
 import styles from './Datetime.module.css';
 
-// export default function App() {
-//   return <MyDTPicker />;
-// }
-
 export default class DTPicker extends React.Component {
   render() {
     return (

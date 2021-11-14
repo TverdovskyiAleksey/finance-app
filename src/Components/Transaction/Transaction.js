@@ -10,6 +10,9 @@ import moment from 'moment';
 // import expensesOperations from 'Redux/expenses/expenses-operations';
 import { validate } from 'indicative/validator';
 
+import DateIcon from './date_icon.svg';
+import { ReactSVG } from 'react-svg';
+
 const useForm = () => {
   const [state, setState] = useState('');
 
@@ -130,22 +133,17 @@ const Transaction = ({ closeModal }) => {
             required
             onChange={handleChange}
           />
-          <label className={styles.label} htmlFor="input-date">
-            date
-          </label>
-
-          {/* <input
-            className={styles.input}
-            type="text"
-            // type="date"
-            name="date"
-            id="input-date"
-            value={date}
-            required
-            // onChange={handleChange}
-          /> */}
-
-          <DTPicker className={styles.input} onChange={setDate} value={date} />
+          <div className={styles.dataContainer}>
+            <label className={styles.label} htmlFor="input-date">
+              date
+            </label>
+            <DTPicker
+              className={styles.input}
+              onChange={setDate}
+              value={date}
+            />
+            <ReactSVG className={styles.dateIcon} src={DateIcon} />
+          </div>
         </div>
         <label className={styles.label} htmlFor="input-comment">
           comment{' '}
