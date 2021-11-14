@@ -4,7 +4,7 @@ import { expensesSelectors } from '../../Redux/expenses';
 import styles from './Expenses.module.css';
 
 const Expenses = () => {
-
+  const isLoading = useSelector(expensesSelectors.getLoading);
   const expenses = useSelector(expensesSelectors.getExpenses);
   const total = useSelector(expensesSelectors.getTotal);
   // const dispatch = useDispatch();
@@ -30,17 +30,24 @@ const Expenses = () => {
           </tr>
         </thead>
         <tbody>
-          {expenses.map(({ id, date, type, category, description, sum }) =>
-          (
-            <tr key={id} className={styles.row}>
-              <td className={styles.item}>{date}</td>
-              <td className={styles.center}>{type}</td>
-              <td className={styles.item}>{category}</td>
-              <td className={styles.item}>{description}</td>
-              <td className={type === '-' ? styles.dec : styles.inc}>{sum.toFixed(2)}</td>
-              <td className={styles.center}>{type === '-' ? (total - sum).toFixed(2) : (total + sum).toFixed(2)}</td>
-            </tr>
-          ))}
+          {isLoading && (
+            <div className={styles.loader}>
+              <h2>Loading...</h2>
+            </div>
+          )
+          }
+          {expenses.length > 0 && (
+            expenses.map(({ id, date, type, category, description, sum }) =>
+            (
+              <tr key={id} className={styles.row}>
+                <td className={styles.item}>{date}</td>
+                <td className={styles.center}>{type}</td>
+                <td className={styles.item}>{category}</td>
+                <td className={styles.item}>{description}</td>
+                <td className={type === '-' ? styles.dec : styles.inc}>{sum.toFixed(2)}</td>
+                <td className={styles.center}>{type === '-' ? (total - sum).toFixed(2) : (total + sum).toFixed(2)}</td>
+              </tr>
+            )))}
         </tbody>
       </table>
     </>
