@@ -5,37 +5,37 @@ import axios from 'axios';
 
 export const fetchExpenses = createAsyncThunk(
   'expense/fetchExpense',
-  async () => {
+  async (_, { rejectWithValue }) => {
     try {
       const { data } = await axios.get('/expenses');
       return data;
     } catch (error) {
-      console.log(error.message);
+      return rejectWithValue(error.message);
     }
   }
 )
 
 export const addExpense = createAsyncThunk(
   'expense/addExpense',
-  async ({ date, type, category, description, sum }) => {
+  async ({ date, type, category, description, sum }, { rejectWithValue }) => {
     const expense = { date, type, category, description, sum };
     try {
       const { data } = await axios.get('/expenses', expense);
       return data;
     } catch (error) {
-      console.log(error.message);
+      return rejectWithValue(error.message);
     }
   }
 )
 
 export const deleteExpense = createAsyncThunk(
   'expense/deleteExpense',
-  async (id) => {
+  async (id, { rejectWithValue }) => {
     try {
       await axios.get('/expenses', id);
       return id;
     } catch (error) {
-      console.log(error.message);
+      return rejectWithValue(error.message);
     }
   }
 )
