@@ -1,8 +1,3 @@
-const Transaction = () => {
-  return <div></div>;
-};
-
-export default Transaction;
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './Transaction.module.css';

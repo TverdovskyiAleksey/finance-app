@@ -1,0 +1,58 @@
+@value primary-text-color from '../../../variables.module.css';
+@value accent-color from '../../../variables.module.css';
+
+@value expenditure-text-color from '../../../variables.module.css';
+@value income-text-color from '../../../variables.module.css';
+@value white-text-color from '../../../variables.module.css';
+@value light-text-color-1 from '../../../variables.module.css';
+@value light-text-color-2 from '../../../variables.module.css';
+@value light-text-color-3 from '../../../variables.module.css';
+@value line-color from '../../../variables.module.css';
+
+@value background-color from '../../../variables.module.css';
+@value background-gradient from '../../../variables.module.css';
+@value background-select from '../../../variables.module.css';
+@value background-backdrop from '../../../variables.module.css';
+
+@value font-weight-regular from '../../../variables.module.css';
+@value font-weight-bold from '../../../variables.module.css';
+
+@value font-size-30 from '../../../variables.module.css';
+@value font-size-24 from '../../../variables.module.css';
+@value font-size-18 from '../../../variables.module.css';
+@value font-size-16 from '../../../variables.module.css';
+@value font-size-12 from '../../../variables.module.css';
+
+@value timing-function from '../../../variables.module.css';
+
+@value desktop from '../../../variables.module.css';
+@value tablet from '../../../variables.module.css';
+@value mobile from '../../../variables.module.css';
+
+.DT {
+  display: flex;
+  /* justify-content: center; */
+  width: 280px;
+  height: 34px;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  /* padding-left: 20px; */
+  padding-right: 20px;
+  padding-top: 0;
+
+  align-items: flex-start;
+  border: none;
+  border-bottom: 1px solid light-text-color-2;
+  font-weight: font-weight-bold;
+  font-size: font-size-18;
+  line-height: 1.5;
+  color: primary-text-color;
+}
+@media screen and (min-width: 768px) {
+  .DT {
+    width: 190px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
