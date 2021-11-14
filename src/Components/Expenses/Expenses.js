@@ -37,8 +37,8 @@ const Expenses = () => {
               <td className={styles.center}>{type}</td>
               <td className={styles.item}>{category}</td>
               <td className={styles.item}>{description}</td>
-              <td className={type === '-' ? styles.dec : styles.inc}>{sum}</td>
-              <td className={styles.center}>{type === '-' ? total - sum : total + sum}</td>
+              <td className={type === '-' ? styles.dec : styles.inc}>{sum.toFixed(2)}</td>
+              <td className={styles.center}>{type === '-' ? (total - sum).toFixed(2) : (total + sum).toFixed(2)}</td>
             </tr>
           ))}
         </tbody>
