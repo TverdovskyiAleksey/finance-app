@@ -62,3 +62,16 @@ body {
 .currency {
   font-weight: font-weight-regular;
 }
+.button {
+  width: 44px;
+  height: 44px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.button svg {
+  fill: income-text-color;
+}
+.button:hover svg {
+  fill: expenditure-text-color;
+}
