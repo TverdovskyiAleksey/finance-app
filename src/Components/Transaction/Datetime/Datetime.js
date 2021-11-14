@@ -2,7 +2,7 @@ import React from 'react';
 import 'react-datetime/css/react-datetime.css';
 import Datetime from 'react-datetime';
 import moment from 'moment';
-import styles from './Datatime.module.css';
+import styles from './Datetime.module.css';
 
 // export default function App() {
 //   return <MyDTPicker />;

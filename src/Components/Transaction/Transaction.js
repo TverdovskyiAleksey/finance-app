@@ -7,7 +7,7 @@ import TypeSwitch from './TypeSwitch';
 // import Selector from './Selector';
 import DTPicker from './Datetime';
 import moment from 'moment';
-import expensesOperations from 'Redux/expenses/expenses-operations';
+// import expensesOperations from 'Redux/expenses/expenses-operations';
 import { validate } from 'indicative/validator';
 
 const useForm = () => {
@@ -73,9 +73,9 @@ const Transaction = ({ closeModal }) => {
     const transaction = { type, category, amount, date, comment };
     evt.preventDefault();
     validateForm(transaction);
-    dispatch(
-      expensesOperations.addExpense({ type, category, amount, date, comment }),
-    );
+    // dispatch(
+    //   expensesOperations.addExpense({ type, category, amount, date, comment }),
+    // );
     closeModal();
   };
 
