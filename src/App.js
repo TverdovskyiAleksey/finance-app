@@ -6,6 +6,7 @@ import LoginView from './Views/LoginView';
 import RegisterView from './Views/RegisterView';
 import StatisticView from './Views/StatisticView';
 import HomeView from './Views/HomeView';
+import "./fonts.css";
 
 function App() {
   return (
