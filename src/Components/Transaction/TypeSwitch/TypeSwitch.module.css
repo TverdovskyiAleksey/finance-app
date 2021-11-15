@@ -1,0 +1,130 @@
+@value primary-text-color from '../../../variables.module.css';
+@value accent-color from '../../../variables.module.css';
+
+@value expenditure-text-color from '../../../variables.module.css';
+@value income-text-color from '../../../variables.module.css';
+@value white-text-color from '../../../variables.module.css';
+@value light-text-color-1 from '../../../variables.module.css';
+@value light-text-color-2 from '../../../variables.module.css';
+@value light-text-color-3 from '../../../variables.module.css';
+@value line-color from '../../../variables.module.css';
+
+@value background-color from '../../../variables.module.css';
+@value background-gradient from '../../../variables.module.css';
+@value background-select from '../../../variables.module.css';
+@value background-backdrop from '../../../variables.module.css';
+
+@value font-weight-regular from '../../../variables.module.css';
+@value font-weight-bold from '../../../variables.module.css';
+
+@value font-size-30 from '../../../variables.module.css';
+@value font-size-24 from '../../../variables.module.css';
+@value font-size-18 from '../../../variables.module.css';
+@value font-size-16 from '../../../variables.module.css';
+@value font-size-12 from '../../../variables.module.css';
+
+@value timing-function from '../../../variables.module.css';
+
+@value desktop from '../../../variables.module.css';
+@value tablet from '../../../variables.module.css';
+@value mobile from '../../../variables.module.css';
+
+.switch {
+  display: flex;
+  margin-bottom: 40px;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.control {
+  position: relative;
+  display: flex;
+  width: 80px;
+  height: 40px;
+  padding: -2px -4px;
+  margin-right: 20px;
+  margin-left: 24px;
+
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 20px;
+}
+
+.toggle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  pointer-events: none;
+}
+
+.track {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  user-select: none;
+  background-color: white-text-color;
+  border: 1px solid light-text-color-2;
+  border-radius: inherit;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.marker {
+  position: relative;
+  display: flex;
+  width: 44px;
+  height: 44px;
+
+  justify-content: center;
+  align-items: center;
+  background-color: expenditure-text-color;
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
+  transform: translateX(40px);
+  transition: transform 250ms timing-function;
+}
+
+.markerActive {
+  composes: marker;
+  background-color: #24cca7;
+  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+  transform: translateX(0px);
+  transition: transform 250ms timing-function;
+}
+
+.transactionType {
+  font-weight: font-weight-bold;
+  font-size: font-size-16;
+  line-height: 24px;
+
+  color: light-text-color-2;
+}
+
+.incomeActive {
+  composes: transactionType;
+  color: #24cca7;
+}
+
+.spendingActive {
+  composes: transactionType;
+  color: expenditure-text-color;
+}
+
+.icon {
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  fill: white-text-color;
+}
