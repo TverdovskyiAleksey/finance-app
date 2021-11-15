@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'Circe Bold';
+  src: url('./assets/fonts/circe-bold.eot');
+  src: local('☺'), url('./assets/fonts/poppins-bold.woff') format('woff'),
+    url('./assets/fonts/circe-bold.ttf') format('truetype'),
+    url('./assets/fonts/circe-bold.svg') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circe Regular';
+  src: url('./assets/fonts/circe-regular.eot');
+  src: local('☺'), url('./assets/fonts/circe-regular.woff') format('woff'),
+    url('./assets/fonts/circe-regular.ttf') format('truetype'),
+    url('./assets/fonts/circe-regular.svg') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins Regular';
+  src: url('./assets/fonts/poppin-pills-regular.eot');
+  src: local('☺'),
+    url('./assets/fonts/poppin-pills-regular.woff') format('woff'),
+    url('./assets/fonts/poppin-pills-regular.ttf') format('truetype'),
+    url('./assets/fonts/poppin-pills-regular.svg') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins Bold';
+  src: url('./assets/fonts/poppins-bold.eot');
+  src: local('☺'), url('./assets/fonts/poppins-bold.woff') format('woff'),
+    url('./assets/fonts/poppins-bold.ttf') format('truetype'),
+    url('./assets/fonts/poppins-bold.svg') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
