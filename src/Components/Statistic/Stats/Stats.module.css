@@ -1,0 +1,31 @@
+@value styles: '../../../variables.module.css';
+@value background-gradient, tablet, desktop from styles;
+
+.statisticsPage {
+  max-width: 320px;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: background-gradient;
+  border-radius: 4px;
+}
+
+@media screen and (min-width: tablet) {
+  .statisticsPage {
+    display: flex;
+    max-width: 768px;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 40px 23px;
+  }
+}
+
+@media screen and (min-width: desktop) {
+  .statisticsPage {
+    max-width: 816px;
+    margin: 0;
+    margin-left: auto;
+    padding: 40px 85px 0 23px;
+    box-shadow: 0 2px 5px 0px #21212150;
+  }
+}
