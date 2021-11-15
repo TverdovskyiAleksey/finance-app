@@ -2,6 +2,7 @@
 import { useSelector } from 'react-redux';
 import { expensesSelectors } from '../../Redux/expenses';
 import styles from './Expenses.module.css';
+import Preloader from '../Loader';
 
 const Expenses = () => {
   const isLoading = useSelector(expensesSelectors.getLoading);
@@ -33,6 +34,7 @@ const Expenses = () => {
           {isLoading && (
             <div className={styles.loader}>
               <h2>Loading...</h2>
+              <Preloader />
             </div>
           )
           }
