@@ -28,6 +28,7 @@ img {
 }
 input {
   border: none;
+  padding: 0;
   font-size: inherit;
   font-weight: inherit;
 }

@@ -4,7 +4,7 @@ import styles from './Transaction.module.css';
 // import { contactsSelection, contactsOperations } from "redux/contacts";
 
 import TypeSwitch from './TypeSwitch';
-// import Selector from './Selector';
+import Selector from './Selector';
 import DTPicker from './Datetime';
 import moment from 'moment';
 // import expensesOperations from 'Redux/expenses/expenses-operations';
@@ -91,30 +91,13 @@ const Transaction = ({ closeModal }) => {
           isChecked={isChecked}
           handleCheckboxChange={handleCheckboxChange}
         />
-        {/* <Selector /> */}
 
         {!isChecked && (
-          <div>
+          <div className={styles.selectorContainer}>
             <label className={styles.label} htmlFor="select-category">
               Выберите категорию
             </label>
-            <select
-              className={styles.select}
-              name="category"
-              value={category}
-              id="select-category"
-              placeholder="Выберите категорию"
-              onChange={handleChange}
-            >
-              <option value="Basic">Основной</option>
-              <option value="Food">Еда</option>
-              <option value="Car">Авто</option>
-              <option value="Growth">Развитие</option>
-              <option value="Children">Дети</option>
-              <option value="House">Дом</option>
-              <option value="Education">Образование</option>
-              <option value="Rest">Остальные</option>
-            </select>
+            <Selector />
           </div>
         )}
         <div className={styles.inputs_block}>
@@ -133,17 +116,13 @@ const Transaction = ({ closeModal }) => {
             required
             onChange={handleChange}
           />
-          <div className={styles.dataContainer}>
-            <label className={styles.label} htmlFor="input-date">
-              date
-            </label>
-            <DTPicker
-              className={styles.input}
-              onChange={setDate}
-              value={date}
-            />
-            <ReactSVG className={styles.dateIcon} src={DateIcon} />
-          </div>
+          {/* <div className={styles.dataContainer}> */}
+          <label className={styles.label} htmlFor="input-date">
+            date
+          </label>
+          <DTPicker className={styles.input} onChange={setDate} value={date} />
+          <ReactSVG className={styles.dateIcon} src={DateIcon} />
+          {/* </div> */}
         </div>
         <label className={styles.label} htmlFor="input-comment">
           comment{' '}
