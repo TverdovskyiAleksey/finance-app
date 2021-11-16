@@ -1,7 +1,26 @@
 .Container {
-  width: 1280px;
-  height: 720px;
+  /* width: 1280px;
+  height: 720px; */
   margin-left: auto;
   margin-right: auto;
-  padding: 30px;
+  margin-top: 0;
+  /* padding: 30px; */
+}
+
+@media screen and (min-width: 320px) {
+  .Container {
+    min-width: 320px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .Container {
+    min-width: 768px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .Container {
+    min-width: 1280px;
+  }
 }

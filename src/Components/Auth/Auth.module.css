@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+h1 {
+  margin: 0;
+}
+
+.register {
+  display: flex;
+  background-color: #e7eaf2;
+}
+
+@media screen and (max-width: 1279px) {
+  .register {
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .register {
+    background-image: url('../Auth/images/Ellipse2.png'),
+      url('../Auth/images/Ellipse1.png');
+    background-repeat: no-repeat;
+    background-position-x: 764px, -145px;
+    background-position-y: -97px, 389px;
+  }
+}
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 1279px) {
+  .registerForm {
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.form {
+  padding: 60px 65px;
+  width: 540px;
+  background-color: white;
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .form {
+    margin: auto;
+    padding: 36px 20px;
+    width: 100%;
+    border-radius: 0%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .form {
+    margin-top: -53px;
+  }
+}
+
+.regLeft {
+  padding: 153px 42px 77px 66px;
+}
+
+@media screen and (max-width: 767px) {
+  .regLeft {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .regLeft {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .regLeft {
+    padding: 60px 114px 111px 114px;
+    align-items: center;
+    text-align: center;
+    background-image: url('../Auth/images/Ellipse2.png');
+    background-repeat: no-repeat;
+    background-position-x: 392px;
+    background-position-y: -98px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .regLeft {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .regImg {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .regImg {
+    width: 274px;
+  }
+}
+
+.regRight {
+  width: 100%;
+  padding: 52px 95px 52px 95px;
+  background-color: #e7eaf2;
+  backdrop-filter: blur(50px);
+}
+
+@media screen and (max-width: 767px) {
+  .regRight {
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .regRight {
+    padding: 0 114px 48px 114px;
+    backdrop-filter: blur(0);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .regRight {
+    background-color: rgba(255, 255, 255, 0.4);
+    /* background-image: url('../Auth/images/Ellipse2.png');
+    background-repeat: no-repeat;
+    background-position-x: 170px;
+    background-position-y: -97px; */
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .regRight {
+    background-image: url('../Auth/images/Ellipse1.png');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-position-y: 300px;
+    background-position-x: -154px;
+  }
+}
+
+.regTitle {
+  text-align: center;
+  font-size: 30px;
+  color: #000000;
+  margin-top: 32px;
+  margin-bottom: 0;
+  font-family: Poppins, sans-serif;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 1279px) {
+  .regTitle {
+    margin-left: 40px;
+    margin-top: 0;
+  }
+}
+
+.title {
+  font-weight: bold;
+  font-size: 30px;
+  color: #000000;
+  font-family: Poppins, sans-serif;
+}
+
+@media screen and (min-width: 320px) {
+  .title {
+    font-size: 24px;
+  }
+}
+
+.input {
+  width: 409px;
+  height: 34px;
+  padding: 12px 20px;
+  border: 0;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 18px;
+
+  color: rgba(189, 189, 189, 1);
+  margin-top: 40px;
+  background-repeat: no-repeat;
+  background-position: left;
+  padding-left: 44px;
+}
+
+@media screen and (min-width: 320px) {
+  .input {
+    width: 280px;
+  }
+}
+
+.btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.button {
+  text-decoration: none;
+  display: grid;
+  align-items: center;
+  cursor: pointer;
+  width: 300px;
+  height: 50px;
+  border-radius: 20px;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background-color: white;
+  color: #4a56e2;
+  border: 1px solid #4a56e2;
+}
+
+@media screen and (min-width: 320px) {
+  .button {
+    width: 280px;
+  }
+}
+
+.btnReg {
+  background-color: #24cca7;
+  color: white;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  width: 300px;
+  height: 50px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 320px) {
+  .btnReg {
+    width: 280px;
+  }
+}
+
+.logoImg {
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+}
+
+@media screen and (min-width: 320px) {
+  .logoImg {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+  }
+}
+
+.logo {
+  margin-bottom: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
