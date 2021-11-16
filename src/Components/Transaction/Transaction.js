@@ -11,6 +11,7 @@ import moment from 'moment';
 import { validate } from 'indicative/validator';
 
 import DateIcon from './date_icon.svg';
+import CloseModalIcon from './close.svg';
 import { ReactSVG } from 'react-svg';
 
 const useForm = () => {
@@ -29,6 +30,7 @@ const Transaction = ({ closeModal }) => {
   const [comment, setComment] = useForm('comment');
 
   const type = isChecked ? 'income' : 'spending';
+  const isTablet = window.innerWidth > 768;
   const dispatch = useDispatch();
 
   const handleCheckboxChange = evt => {
@@ -84,6 +86,15 @@ const Transaction = ({ closeModal }) => {
 
   return (
     <>
+      {isTablet && (
+        <button
+          className={styles.button_close}
+          type="button"
+          onClick={closeModal}
+        >
+          <ReactSVG className={styles.closeIcon} src={CloseModalIcon} />
+        </button>
+      )}
       <form className={styles.form} onSubmit={handleSubmit}>
         <h2 className={styles.title}>Добавить транзакцию</h2>
 

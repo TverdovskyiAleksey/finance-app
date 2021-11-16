@@ -33,5 +33,6 @@
     width: 540px;
     height: auto;
     border-radius: 20px;
+    position: relative;
   }
 }

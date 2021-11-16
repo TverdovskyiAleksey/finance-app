@@ -1,33 +1,11 @@
-@value primary-text-color from '../../../variables.module.css';
-@value accent-color from '../../../variables.module.css';
-
 @value expenditure-text-color from '../../../variables.module.css';
 @value income-text-color from '../../../variables.module.css';
 @value white-text-color from '../../../variables.module.css';
-@value light-text-color-1 from '../../../variables.module.css';
 @value light-text-color-2 from '../../../variables.module.css';
-@value light-text-color-3 from '../../../variables.module.css';
-@value line-color from '../../../variables.module.css';
-
 @value background-color from '../../../variables.module.css';
-@value background-gradient from '../../../variables.module.css';
-@value background-select from '../../../variables.module.css';
-@value background-backdrop from '../../../variables.module.css';
-
-@value font-weight-regular from '../../../variables.module.css';
 @value font-weight-bold from '../../../variables.module.css';
-
-@value font-size-30 from '../../../variables.module.css';
-@value font-size-24 from '../../../variables.module.css';
-@value font-size-18 from '../../../variables.module.css';
 @value font-size-16 from '../../../variables.module.css';
-@value font-size-12 from '../../../variables.module.css';
-
 @value timing-function from '../../../variables.module.css';
-
-@value desktop from '../../../variables.module.css';
-@value tablet from '../../../variables.module.css';
-@value mobile from '../../../variables.module.css';
 
 .switch {
   display: flex;
@@ -97,7 +75,7 @@
 
 .markerActive {
   composes: marker;
-  background-color: #24cca7;
+  background-color: income-text-color;
   box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
   transform: translateX(0px);
   transition: transform 250ms timing-function;
@@ -106,14 +84,14 @@
 .transactionType {
   font-weight: font-weight-bold;
   font-size: font-size-16;
-  line-height: 24px;
+  line-height: 1.5;
 
   color: light-text-color-2;
 }
 
 .incomeActive {
   composes: transactionType;
-  color: #24cca7;
+  color: income-text-color;
 }
 
 .spendingActive {

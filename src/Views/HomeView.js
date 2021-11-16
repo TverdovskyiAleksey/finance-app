@@ -7,7 +7,7 @@ import Modal from '../Components/Modal';
 import { useState } from 'react';
 
 const HomeView = () => {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const toggleModal = () => {
     setShowModal(prevState => !prevState);
   };
@@ -25,3 +25,4 @@ const HomeView = () => {
     )}
   </div>;
 };
+export default HomeView;

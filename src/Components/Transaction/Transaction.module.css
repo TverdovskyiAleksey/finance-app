@@ -1,49 +1,23 @@
-@value primary-text-color from 'path/to/variables.module.css'
-@value accent-color: #4a56e2;
-/* valuta-hover-button */
-@value expenditure-text-color: #ff6596;
-@value income-text-color: #24cca7;
-@value white-text-color: #ffffff;
-@value light-text-color-1: #bdbdbd;
-/* (form,name) */
-@value light-text-color-2: #e0e0e0;
-/* (modal) */
-@value light-text-color-3: #a6a6a6;
-/* ballance */
-@value line-color: #dcdcdf;
+@value primary-text-color from '../../variables.module.css';
+@value accent-color from '../../variables.module.css';
+@value expenditure-text-color from '../../variables.module.css';
+@value income-text-color from '../../variables.module.css';
+@value white-text-color from '../../variables.module.css';
+@value light-text-color-1 from '../../variables.module.css';
+@value light-text-color-2 from '../../variables.module.css';
+@value light-text-color-3 from '../../variables.module.css';
+@value line-color from '../../variables.module.css';
 
-@value background-color: #e7eaf2;
-@value background-gradient: rgba(255, 255, 255, 0.4);
-@value background-select: rgba(255, 255, 255, 0.7);
-@value background-backdrop: rgba(0, 0, 0, 0.25);
+@value font-family-main from '../../variables.module.css';
+@value font-family-secondary from '../../variables.module.css';
 
-@value statistic-color-1: #fed057;
-@value statistic-color-2: #ffd8d0;
-@value statistic-color-3: #fd9498;
-@value statistic-color-4: #c5baff;
-@value statistic-color-5: #6e78e8;
-@value statistic-color-6: #4a56e2;
-@value statistic-color-7: #81e1ff;
-@value statistic-color-8: #24cca7;
-@value statistic-color-9: #00ad84;
-
-@value font-family-main: 'Poppins', sans-serif;
-@value font-family-secondary: 'Circe', sans-serif;
-
-@value font-weight-regular: 400;
-@value font-weight-bold: 700;
-
-@value font-size-30: 30px;
-@value font-size-24: 24px;
-@value font-size-18: 18px;
-@value font-size-16: 16px;
-@value font-size-12: 12px;
-
-@value timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-@value desktop: 1280px;
-@value tablet: 768px;
-@value mobile: 320px;
+@value font-weight-regular from '../../variables.module.css';
+@value font-weight-bold from '../../variables.module.css';
+@value font-size-30 from '../../variables.module.css';
+@value font-size-24 from '../../variables.module.css';
+@value font-size-18 from '../../variables.module.css';
+@value timing-function from '../../variables.module.css';
+@value tablet from '../../variables.module.css';
 
 .form {
   width: 100%;
@@ -59,7 +33,7 @@
 
   font-weight: font-weight-regular;
   font-size: font-size-24;
-  line-height: 36px;
+  line-height: 1.5;
 
   color: primary-text-color;
 }
@@ -75,15 +49,6 @@
   overflow: hidden;
 }
 
-/* .select {
-  display: block;
-  width: 280px;
-
-  margin-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto;
-} */
-
 .selectorContainer {
   width: 280px;
   margin-left: auto;
@@ -98,7 +63,6 @@
 
 .input {
   display: flex;
-  /* justify-content: center; */
   width: 280px;
   height: 34px;
   margin-bottom: 40px;
@@ -124,12 +88,6 @@ input::placeholder {
 
 /* .input-active {
   
-} */
-/* .dataContainer {
-  position: relative;
-  width: 280px;
-  margin-left: auto;
-  margin-right: auto;
 } */
 
 .dateIcon {
@@ -192,23 +150,6 @@ input::placeholder {
     font-size: font-size-30;
   }
 
-  .label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-    clip: rect(0 0 0 0);
-    overflow: hidden;
-  }
-
-  /* .select {
-    display: block;
-    width: 410px;
-    margin-left: auto;
-    margin-right: auto;
-  } */
   .selectorContainer {
     width: 410px;
     margin-left: auto;
@@ -229,23 +170,28 @@ input::placeholder {
     margin-right: 0;
     margin-bottom: 0;
   }
-
-  input::placeholder {
-    /* align-self: flex-start; */
-    /* color: light-text-color-1; */
-  }
-
-  /* .input-active {
-    
-  } */
-  /* .dataContainer {
-    width: 190px;
-    margin: 0;
-  } */
   .comment {
     composes: input;
     width: 410px;
     height: 34px;
     margin-bottom: 40px;
+  }
+
+  .button_close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    padding: 0;
+    width: 16px;
+    height: 16px;
+    background: white-text-color;
+    border: none;
+  }
+
+  .closeIcon {
+    display: block;
+    width: 16px;
+    height: 16px;
   }
 }
