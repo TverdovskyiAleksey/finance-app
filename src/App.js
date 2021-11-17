@@ -6,10 +6,12 @@ import LoginView from './Views/LoginView';
 import RegisterView from './Views/RegisterView';
 import StatisticView from './Views/StatisticView';
 import HomeView from './Views/HomeView';
+import AppBar from './Components/AppBar';
 
 function App() {
   return (
     <Container>
+      <AppBar />
       <Switch>
         <PublicRoute exact path="/login" redirectTo="/home" restricted>
           <LoginView />

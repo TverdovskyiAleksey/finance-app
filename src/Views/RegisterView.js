@@ -55,7 +55,7 @@ export default function RegisterView() {
         <form className={styles.form} onSubmit={handelSubmit} autoComplete="off">
           <div className={styles.logo}>
             <img className={styles.logoImg} src={logo} alt='logo' />
-             <h1 className={styles.title}>Wallet</h1>
+             <p className={styles.title}>Wallet</p>
           </div>
        
             <div >
@@ -107,9 +107,6 @@ export default function RegisterView() {
   <button className={styles.btnReg} type="submit">
           Регистрация
         </button>
-        {/* <button className={styles.button} type="button">
-          Вход
-        </button> */}
               <Link to="/login" className={styles.button}>Вход</Link>
 
           </div>

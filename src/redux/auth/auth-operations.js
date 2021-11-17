@@ -23,23 +23,17 @@ const register = createAsyncThunk('auth/register', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
+    console.log(error.message)
+  }
+});
+const logOut = createAsyncThunk('auth/logout', async () => {
+  try {
+    await axios.post('/users/logout');
+    token.unset();
+  } catch (error) {
     // TODO: Добавить обработку ошибки error.message
   }
 });
-
-// /*
-//  * POST @ /users/logout
-//  * headers: Authorization: Bearer token
-//  * После успешного логаута, удаляем токен из HTTP-заголовка
-//  */
-// const logOut = createAsyncThunk('auth/logout', async () => {
-//   try {
-//     await axios.post('/users/logout');
-//     token.unset();
-//   } catch (error) {
-//     // TODO: Добавить обработку ошибки error.message
-//   }
-// });
 // /*
 //  * GET @ /users/current
 //  * headers:
@@ -72,7 +66,7 @@ const register = createAsyncThunk('auth/register', async credentials => {
 
 const operations = {
   register,
-  // logOut,
+  logOut,
   // logIn,
   // fetchCurrentUser,
 };
