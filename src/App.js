@@ -11,7 +11,7 @@ import "./fonts.css";
 function App() {
   return (
     <Container>
-      <Switch>
+      <Switch>        
         <PublicRoute exact path="/login" redirectTo="/home" restricted>
           <LoginView />
         </PublicRoute>

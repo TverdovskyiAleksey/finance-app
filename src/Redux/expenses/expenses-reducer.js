@@ -3,6 +3,7 @@ import { createReducer } from '@reduxjs/toolkit';
 
 import { fetchExpenses, addExpense, deleteExpense } from './expenses-operations';
 
+
 const transactionList = [
   { id: 'id-1', date: '04.01.2021', type: '+', category: 'Регулярный доход', description: 'Бонус за январь', sum: 8000 },
   { id: 'id-2', date: '05.01.2021', type: '-', category: 'Разное', description: 'Подарок жене', sum: 3000 },
@@ -11,6 +12,8 @@ const transactionList = [
   { id: 'id-5', date: '08.01.2021', type: '+', category: 'Нерегулярный доход', description: 'Подарок на др', sum: 1500 },
   { id: 'id-6', date: '09.01.2021', type: '-', category: 'Здоровье', description: 'Мартини', sum: 200 },
   { id: 'id-7', date: '10.01.2021', type: '-', category: 'Разное', description: 'Поездка', sum: 1500 },
+  
+  
 ]
 
 const items = createReducer(transactionList, {

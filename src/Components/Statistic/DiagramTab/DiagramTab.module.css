@@ -8,6 +8,22 @@ ul {
   margin-left: 0;
   padding-left: 0;
 }
+.containers {
+  display: flex;
+
+  justify-content: center;
+}
+
+.transactionElements {
+  display: flex;
+  margin: 0;
+  align-items: center;
+  height: 54px;
+  padding-left: 12px;
+  /* padding-right: 30px; */
+  color: primary-text-color;
+  border-bottom: 1px solid line-color;
+}
 
 .list {
   display: flex;
@@ -40,8 +56,8 @@ ul {
   display: flex;
   align-items: center;
   height: 54px;
-  padding-left: 12px;
-  padding-right: 30px;
+  padding-left: 16px;
+  padding-right: 15px;
   color: primary-text-color;
   border-bottom: 1px solid line-color;
 }
@@ -49,11 +65,11 @@ ul {
   width: 24px;
   min-height: 24px;
   border-radius: 2px;
-  margin-right: 15px;
+  /* margin-right: 15px; */
 }
 .category {
   font-family: font-family-secondary;
-  width: 130px;
+  width: 170px;
   font-style: normal;
   font-weight: font-weight-regular;
   font-size: font-size-16;
@@ -96,8 +112,8 @@ ul {
 }
 .listCategories {
   margin: 0;
-  padding-left: 12px;
-  padding-right: 30px;
+  padding-left: 35px;
+  padding-right: 38px;
   margin-bottom: 30px;
   font-family: font-family-secondary;
   font-style: normal;
@@ -121,11 +137,14 @@ ul {
     margin-left: auto;
   }
   .category {
-    width: 145px;
-    line-height: 18px;
+    width: 235px;
   }
   .noOperations {
     padding-left: 135px;
+  }
+  .listCategories {
+    padding-left: 16px;
+    padding-right: 20px;
   }
 }
 
