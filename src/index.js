@@ -4,14 +4,20 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import 'modern-normalize/modern-normalize.css';
 import { BrowserRouter } from 'react-router-dom';
-import { store } from './redux/store';
+import { Provider } from 'react-redux';
+import { store, persistor } from './Redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import './index.css';
+import './fonts.css';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
