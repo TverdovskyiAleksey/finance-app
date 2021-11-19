@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './Transaction.module.css';
-// import { contactsSelection, contactsOperations } from "redux/contacts";
+import moment from 'moment';
+import { validate } from 'indicative/validator';
+import { ReactSVG } from 'react-svg';
 
 import TypeSwitch from './TypeSwitch';
 import Selector from './Selector';
 import DTPicker from './Datetime';
-import moment from 'moment';
-// import expensesOperations from 'Redux/expenses/expenses-operations';
-import { validate } from 'indicative/validator';
+import { addExpense } from '../../redux/expenses/expenses-operations';
 
 import DateIcon from './date_icon.svg';
 import CloseModalIcon from './close.svg';
-import { ReactSVG } from 'react-svg';
 
 const useForm = () => {
   const [state, setState] = useState('');
@@ -38,7 +37,7 @@ const Transaction = ({ closeModal }) => {
   };
 
   const handleChange = evt => {
-    console.log(evt);
+    // console.log(evt);
     const { name, value } = evt.target;
     switch (name) {
       case 'category':
@@ -78,9 +77,7 @@ const Transaction = ({ closeModal }) => {
     const transaction = { type, category, amount, date, comment };
     evt.preventDefault();
     validateForm(transaction);
-    // dispatch(
-    //   expensesOperations.addExpense({ type, category, amount, date, comment }),
-    // );
+    dispatch(addExpense({ type, category, amount, date, comment }));
     closeModal();
   };
 
@@ -108,7 +105,12 @@ const Transaction = ({ closeModal }) => {
             <label className={styles.label} htmlFor="select-category">
               Выберите категорию
             </label>
-            <Selector />
+            <Selector
+              id="select-category"
+              name="select"
+              onChange={setCategory}
+              value={category}
+            />
           </div>
         )}
         <div className={styles.inputs_block}>
@@ -127,13 +129,12 @@ const Transaction = ({ closeModal }) => {
             required
             onChange={handleChange}
           />
-          {/* <div className={styles.dataContainer}> */}
+
           <label className={styles.label} htmlFor="input-date">
             date
           </label>
           <DTPicker className={styles.input} onChange={setDate} value={date} />
           <ReactSVG className={styles.dateIcon} src={DateIcon} />
-          {/* </div> */}
         </div>
         <label className={styles.label} htmlFor="input-comment">
           comment{' '}

@@ -71,7 +71,7 @@ const customStyles = {
   }),
 };
 
-const Selector = () => {
+const Selector = ({ onChange, value }) => {
   return (
     <>
       <Select
@@ -80,6 +80,8 @@ const Selector = () => {
         placeholder={'Выберите категорию'}
         maxMenuHeight={380}
         id="select-category"
+        onChange={value => onChange(value.value)}
+        value={value}
       />
     </>
   );
