@@ -7,8 +7,8 @@ import DiagramTab from '../DiagramTab';
 const Statistic = () => {
   return (
     <div className={styles.statisticsPage}>
-      <Chart />
-      <DiagramTab />
+      <Chart  />
+      <DiagramTab  />
     </div>    
   )
   
