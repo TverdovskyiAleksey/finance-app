@@ -25,10 +25,11 @@ const Transaction = ({ closeModal }) => {
   const [date, setDate] = useState(() => moment()._d);
 
   const [category, setCategory] = useForm('category');
-  const [amount, setAmount] = useForm('amount');
-  const [comment, setComment] = useForm('comment');
+  const [sum, setSum] = useForm('sum');
+  const [description, setDescription] = useForm('description');
 
-  const type = isChecked ? 'income' : 'spending';
+  // const type = isChecked ? 'income' : 'spending';
+  const type = isChecked ? '+' : '-';
   const isTablet = window.innerWidth > 768;
   const dispatch = useDispatch();
 
@@ -44,12 +45,12 @@ const Transaction = ({ closeModal }) => {
         setCategory(value);
         break;
 
-      case 'amount':
-        setAmount(value);
+      case 'sum':
+        setSum(value);
         break;
 
-      case 'comment':
-        setComment(value);
+      case 'description':
+        setDescription(value);
         break;
 
       default:
@@ -60,7 +61,7 @@ const Transaction = ({ closeModal }) => {
   const validateForm = data => {
     const rules = {
       type: 'required',
-      amount: 'required',
+      sum: 'required',
       date: 'required|date',
     };
 
@@ -74,10 +75,10 @@ const Transaction = ({ closeModal }) => {
   };
 
   const handleSubmit = evt => {
-    const transaction = { type, category, amount, date, comment };
+    const transaction = { type, category, sum, date, description };
     evt.preventDefault();
     validateForm(transaction);
-    dispatch(addExpense({ type, category, amount, date, comment }));
+    dispatch(addExpense({ type, category, sum, date, description }));
     closeModal();
   };
 
@@ -109,7 +110,7 @@ const Transaction = ({ closeModal }) => {
               id="select-category"
               name="select"
               onChange={setCategory}
-              value={category}
+              // value={category}
             />
           </div>
         )}
@@ -120,10 +121,10 @@ const Transaction = ({ closeModal }) => {
           <input
             className={styles.input}
             type="text"
-            name="amount"
+            name="sum"
             id="input-amount"
             placeholder="0.00"
-            value={amount}
+            value={sum}
             pattern="(^[0-9]*[1-9]+[0-9]*[\.,][0-9]*$)|(^[0-9]*[\.,][0-9]*[1-9]+[0-9]*$)|(^[0-9]*[1-9]+[0-9]*$)"
             title="Сумма должна содержать целые или дробные числа"
             required
@@ -137,7 +138,7 @@ const Transaction = ({ closeModal }) => {
           <ReactSVG className={styles.dateIcon} src={DateIcon} />
         </div>
         <label className={styles.label} htmlFor="input-comment">
-          comment{' '}
+          Comment
         </label>
         <input
           className={styles.comment}
@@ -145,7 +146,7 @@ const Transaction = ({ closeModal }) => {
           name="comment"
           id="input-comment"
           placeholder="Комментарий"
-          value={comment}
+          value={description}
           onChange={handleChange}
         />
         <button className={styles.button_submit} type="submit">
