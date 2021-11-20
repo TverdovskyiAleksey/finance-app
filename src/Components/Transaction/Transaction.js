@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './Transaction.module.css';
 import moment from 'moment';
-import { validate, configure } from 'indicative/validator';
+import { validate } from 'indicative/validator';
 import { ReactSVG } from 'react-svg';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import TypeSwitch from './TypeSwitch';
 import Selector from './Selector';
@@ -78,19 +80,18 @@ const Transaction = ({ closeModal }) => {
 
     validate(data, rules, messages)
       .then(data => dispatch(addExpense(data)).then(closeModal))
-      .catch(error => alert(error[0].message));
+      .catch(error => toast.warn(error[0].message));
   };
 
   const handleSubmit = evt => {
     const transaction = { type, category, sum, date, description };
     evt.preventDefault();
     validateForm(transaction);
-    // dispatch(addExpense({ type, category, sum, date, description }));
-    // closeModal();
   };
 
   return (
     <>
+      <ToastContainer />
       {isTablet && (
         <button
           className={styles.button_close}
