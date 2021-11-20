@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './Transaction.module.css';
 import moment from 'moment';
-import { validate } from 'indicative/validator';
+import { validate, configure } from 'indicative/validator';
 import { ReactSVG } from 'react-svg';
 
 import TypeSwitch from './TypeSwitch';
@@ -38,7 +38,6 @@ const Transaction = ({ closeModal }) => {
   };
 
   const handleChange = evt => {
-    // console.log(evt);
     const { name, value } = evt.target;
     switch (name) {
       case 'category':
@@ -59,27 +58,35 @@ const Transaction = ({ closeModal }) => {
   };
 
   const validateForm = data => {
-    const rules = {
-      type: 'required',
-      sum: 'required',
-      date: 'required|date',
-    };
+    const rules = !isChecked
+      ? {
+          type: 'required',
+          sum: 'required',
+          date: 'required|date',
+          category: 'required',
+        }
+      : {
+          type: 'required',
+          sum: 'required',
+          date: 'required|date',
+        };
 
     const messages = {
       required: field => `${field} is required`,
       'date.date': 'Use date format',
     };
 
-    validate(data, rules, messages);
-    // .then(console.log).catch(console.error);
+    validate(data, rules, messages)
+      .then(data => dispatch(addExpense(data)).then(closeModal))
+      .catch(error => alert(error[0].message));
   };
 
   const handleSubmit = evt => {
     const transaction = { type, category, sum, date, description };
     evt.preventDefault();
     validateForm(transaction);
-    dispatch(addExpense({ type, category, sum, date, description }));
-    closeModal();
+    // dispatch(addExpense({ type, category, sum, date, description }));
+    // closeModal();
   };
 
   return (
