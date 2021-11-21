@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import Header from './Header';
-import { authSelectors } from '../redux/auth';
+import { authSelectors } from '../Redux/auth';
 // import { display, style } from '@mui/system';
 
 const styles = {

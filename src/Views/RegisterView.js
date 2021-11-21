@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 // import { Formik } from 'formik';
 // import * as yup from 'yup';
-import { authOperations } from '../redux/auth';
+import { authOperations } from '../Redux/auth';
 import { Link } from 'react-router-dom';
 import styles from '../Components/Auth/Auth.module.css';
 
