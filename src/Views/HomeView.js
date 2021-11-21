@@ -5,6 +5,7 @@ import styles from '../Components/Expenses/Expenses.module.css';
 import Transaction from '../Components/Transaction';
 import Modal from '../Components/Modal';
 import { useState } from 'react';
+import Sidebar from '../Components/Sidebar';
 
 const HomeView = () => {
   const [showModal, setShowModal] = useState(false);
@@ -14,6 +15,7 @@ const HomeView = () => {
   return (
     <div>
       <h1>Welcome home</h1>
+      <Sidebar />
       <Expenses />
       <button
         className={styles.button}
