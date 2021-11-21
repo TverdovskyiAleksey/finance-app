@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from "react";
 
-import { authOperations, authSelectors } from '../../redux/auth';
+import { authOperations, authSelectors } from '../../Redux/auth';
 import logo from '../../Components/Auth/images/logo.png';
 import styles from './Header.module.css';
 import logout from './images/logout.svg';
