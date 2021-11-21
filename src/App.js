@@ -7,7 +7,7 @@ import RegisterView from './Views/RegisterView';
 import StatisticView from './Views/StatisticView';
 import HomeView from './Views/HomeView';
 import AppBar from './Components/AppBar';
-import "./fonts.css";
+import './fonts.css';
 
 function App() {
   return (
@@ -20,12 +20,12 @@ function App() {
         <PublicRoute exact path="/register" restricted>
           <RegisterView />
         </PublicRoute>
-        <PrivateRoute>
-          <HomeView exact path="/home" redirectTo="/login" />
-        </PrivateRoute>
-        <PrivateRoute>
-          <StatisticView exact path="/statistic" redirectTo="/login" />
-        </PrivateRoute>
+        {/* <PrivateRoute> */}
+        <HomeView exact path="/home" redirectTo="/login" />
+        {/* </PrivateRoute> */}
+        {/* <PrivateRoute> */}
+        <StatisticView exact path="/statistic" redirectTo="/login" />
+        {/* </PrivateRoute> */}
       </Switch>
     </Container>
   );

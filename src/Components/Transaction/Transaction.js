@@ -118,7 +118,6 @@ const Transaction = ({ closeModal }) => {
               id="select-category"
               name="select"
               onChange={setCategory}
-              // value={category}
             />
           </div>
         )}

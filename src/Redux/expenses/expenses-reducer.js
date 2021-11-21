@@ -1,17 +1,72 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 
-import { fetchExpenses, addExpense, deleteExpense } from './expenses-operations';
+import {
+  fetchExpenses,
+  addExpense,
+  deleteExpense,
+} from './expenses-operations';
+
+import { updateFilterAction } from './expenses-action';
 
 const transactionList = [
-  { id: 'id-1', date: '04.01.2021', type: '+', category: 'Регулярный доход', description: 'Бонус за январь', sum: 8000 },
-  { id: 'id-2', date: '05.01.2021', type: '-', category: 'Разное', description: 'Подарок жене', sum: 3000 },
-  { id: 'id-3', date: '07.01.2021', type: '+', category: 'Машина', description: 'Масло', sum: 1000 },
-  { id: 'id-4', date: '07.01.2021', type: '-', category: 'Продукты', description: 'Овощи на неделю', sum: 320 },
-  { id: 'id-5', date: '08.01.2021', type: '+', category: 'Нерегулярный доход', description: 'Подарок на др', sum: 1500 },
-  { id: 'id-6', date: '09.01.2021', type: '-', category: 'Здоровье', description: 'Мартини', sum: 200 },
-  { id: 'id-7', date: '10.01.2021', type: '-', category: 'Разное', description: 'Поездка', sum: 1500 },
-]
+  {
+    id: 'id-1',
+    date: '01.01.2021',
+    type: '+',
+    category: 'Регулярный доход',
+    description: 'Бонус за январь',
+    sum: 8000,
+  },
+  {
+    id: 'id-2',
+    date: '01.01.2021',
+    type: '-',
+    category: 'Разное',
+    description: 'Подарок жене',
+    sum: 3000,
+  },
+  {
+    id: 'id-3',
+    date: '01.02.2021',
+    type: '-',
+    category: 'Машина',
+    description: 'Масло',
+    sum: 1000,
+  },
+  {
+    id: 'id-4',
+    date: '07.08.2021',
+    type: '-',
+    category: 'Продукты',
+    description: 'Овощи на неделю',
+    sum: 320,
+  },
+  {
+    id: 'id-5',
+    date: '08.01.2021',
+    type: '+',
+    category: 'Нерегулярный доход',
+    description: 'Подарок на др',
+    sum: 1500,
+  },
+  {
+    id: 'id-6',
+    date: '02.04.2021',
+    type: '-',
+    category: 'Здоровье',
+    description: 'Мартини',
+    sum: 200,
+  },
+  {
+    id: 'id-7',
+    date: '10.02.2021',
+    type: '-',
+    category: 'Разное',
+    description: 'Поездка',
+    sum: 1500,
+  },
+];
 
 const items = createReducer(transactionList, {
   [fetchExpenses.fulfilled]: (_, { payload }) => payload,
@@ -20,9 +75,9 @@ const items = createReducer(transactionList, {
     state.filter(({ id }) => id !== payload),
 });
 
-// const filter = createReducer('', {
-//   [changeFilter]: (_, { payload }) => payload,
-// });
+const filter = createReducer('', {
+  [updateFilterAction]: (_, { payload }) => payload,
+});
 
 const loading = createReducer(false, {
   [fetchExpenses.pending]: () => true,
@@ -43,7 +98,7 @@ const error = createReducer(null, {
 
 export default combineReducers({
   items,
-  // filter,
+  filter,
   loading,
   error,
 });
