@@ -1,52 +1,41 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import {
-  fetchExpenseRequest,
-  fetchExpenseSuccess,
-  fetchExpenseError,
-  addExpenseRequest,
-  addExpenseSuccess,
-  addExpenseError,
-  deleteExpenseError,
-  deleteExpenseRequest,
-  deleteExpenseSuccess,
-} from './expenses-action';
 
 // axios.defaults.baseURL = 'http://localhost:3000';
 
-// eslint-disable-next-line no-unused-vars
-const fetchExpenses = () => async dispatch => {
-  dispatch(fetchExpenseRequest());
-
-  try {
-    const { data } = await axios.get('/expenses');
-    dispatch(fetchExpenseSuccess(data));
-  } catch (error) {
-    dispatch(fetchExpenseError(error));
-  }
-};
-
-const addExpense =
-  ({ name, number }) =>
-  async dispatch => {
-    const expense = { name, number };
-
-    dispatch(addExpenseRequest());
-
+export const fetchExpenses = createAsyncThunk(
+  'expense/fetchExpense',
+  async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/expenses', expense);
-      dispatch(addExpenseSuccess(data));
+      const { data } = await axios.get('/expenses');
+      return data;
     } catch (error) {
-      dispatch(addExpenseError(error));
+      return rejectWithValue(error.message);
     }
-  };
+  }
+)
 
-const deleteExpense = id => async dispatch => {
-  dispatch(deleteExpenseRequest());
+export const addExpense = createAsyncThunk(
+  'expense/addExpense',
+  async ({ date, type, category, description, sum }, { rejectWithValue }) => {
+    const expense = { date, type, category, description, sum };
+    try {
+      const { data } = await axios.get('/expenses', expense);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+)
 
-  axios
-    .delete(`/expense/${id}`)
-    .then(() => dispatch(deleteExpenseSuccess(id)))
-    .catch(error => dispatch(deleteExpenseError(error)));
-};
-// eslint-disable-next-line import/no-anonymous-default-export
-export default { addExpense, deleteExpense, fetchExpenses };
+export const deleteExpense = createAsyncThunk(
+  'expense/deleteExpense',
+  async (id, { rejectWithValue }) => {
+    try {
+      await axios.get('/expenses', id);
+      return id;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+)

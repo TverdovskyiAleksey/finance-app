@@ -1,33 +1,8 @@
 @value primary-text-color from '../../../variables.module.css';
-@value accent-color from '../../../variables.module.css';
-
-@value expenditure-text-color from '../../../variables.module.css';
-@value income-text-color from '../../../variables.module.css';
-@value white-text-color from '../../../variables.module.css';
-@value light-text-color-1 from '../../../variables.module.css';
 @value light-text-color-2 from '../../../variables.module.css';
-@value light-text-color-3 from '../../../variables.module.css';
-@value line-color from '../../../variables.module.css';
-
-@value background-color from '../../../variables.module.css';
-@value background-gradient from '../../../variables.module.css';
-@value background-select from '../../../variables.module.css';
-@value background-backdrop from '../../../variables.module.css';
-
-@value font-weight-regular from '../../../variables.module.css';
 @value font-weight-bold from '../../../variables.module.css';
-
-@value font-size-30 from '../../../variables.module.css';
-@value font-size-24 from '../../../variables.module.css';
 @value font-size-18 from '../../../variables.module.css';
-@value font-size-16 from '../../../variables.module.css';
-@value font-size-12 from '../../../variables.module.css';
-
-@value timing-function from '../../../variables.module.css';
-
-@value desktop from '../../../variables.module.css';
 @value tablet from '../../../variables.module.css';
-@value mobile from '../../../variables.module.css';
 
 .DT {
   display: flex;
@@ -49,7 +24,7 @@
   line-height: 1.5;
   color: primary-text-color;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: tablet) {
   .DT {
     width: 190px;
     margin-left: 0;

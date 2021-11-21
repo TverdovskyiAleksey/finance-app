@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Select from 'react-select';
 
 const options = [
@@ -71,7 +71,7 @@ const customStyles = {
   }),
 };
 
-const Selector = () => {
+const Selector = ({ onChange }) => {
   return (
     <>
       <Select
@@ -80,6 +80,7 @@ const Selector = () => {
         placeholder={'Выберите категорию'}
         maxMenuHeight={380}
         id="select-category"
+        onChange={value => onChange(value.value)}
       />
     </>
   );
