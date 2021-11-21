@@ -1,6 +1,8 @@
 .currency {
   width: 280px;
   margin-bottom: 250px;
+  margin-left: auto;
+  margin-right: auto;
 
   &__title-list {
     display: flex;
@@ -18,12 +20,15 @@
     line-height: 27px;
     color: #ffffff;
     list-style-type: none;
+    &:nth-child(2) {
+      margin-right: 40px;
+    }
   }
 
   &__price-list {
     background-color: #4a56e2;
     background-repeat: no-repeat;
-    background-image: url('./BgCurrency.svg');
+    background-image: url('./CurrencyBackground/BackgroundMobile.svg');
     background-size: contain;
     background-position: bottom;
     border-radius: 0px 0px 30px 30px;
@@ -50,19 +55,27 @@
   .currency {
     width: 334px;
     margin-bottom: 0;
+    margin-left: auto;
+    margin-right: 40px;
+  }
+  &__price-list {
+    background-image: url('./CurrencyBackground/BackgroundTablet.svg');
   }
 }
 
 @media screen and (min-width: 1280px) {
   .currency {
     width: 348px;
+    margin-left: 87px;
+    margin-right: auto;
 
     &__title-list {
       padding: 17px 30px 16px 30px;
     }
 
     &__price-list {
-      padding: 20px 30px 149px 30px;
+      padding: 20px 30px 60px 30px;
+      background-image: url('./CurrencyBackground/BackgroundDesktop.svg');
     }
 
     &__price:not(:last-child) {

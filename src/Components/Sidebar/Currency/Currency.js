@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { createArrCurrency } from './funcCreateArrCurrency';
 import './Currency.scss';
 
-
 export default function Currency() {
   const [USD, setUSD] = useState({ buy: '00.00', sale: '00.00' });
   const [EUR, setEUR] = useState({ buy: '00.00', sale: '00.00' });
@@ -25,11 +24,11 @@ export default function Currency() {
   }, []);
 
   return (
-    <div className="currency" >
+    <div className="currency">
       <ul className="currency__title-list">
-        <li className="currency__title">Валюта</li>
-        <li className="currency__title">Покупка</li>
-        <li className="currency__title">Продажа</li>
+        <li className="currency__title">Currency</li>
+        <li className="currency__title">Buy</li>
+        <li className="currency__title">Sell</li>
       </ul>
 
       <ul className="currency__price-list">
@@ -52,5 +51,3 @@ export default function Currency() {
     </div>
   );
 }
-
-
