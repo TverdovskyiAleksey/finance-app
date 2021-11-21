@@ -11,18 +11,23 @@ const HomeView = () => {
   const toggleModal = () => {
     setShowModal(prevState => !prevState);
   };
-
-  <div>
-    <h1>Welcome home</h1>
-    <Expenses />
-    <button className={styles.button} aria-label="add expenses">
-      <AddIcon width="44" height="44" />
-    </button>
-    {showModal && (
-      <Modal onClose={toggleModal}>
-        <Transaction closeModal={toggleModal}></Transaction>
-      </Modal>
-    )}
-  </div>;
+  return (
+    <div>
+      <h1>Welcome home</h1>
+      <Expenses />
+      <button
+        className={styles.button}
+        aria-label="add expenses"
+        onClick={toggleModal}
+      >
+        <AddIcon width="44" height="44" />
+      </button>
+      {showModal && (
+        <Modal onClose={toggleModal}>
+          <Transaction closeModal={toggleModal}></Transaction>
+        </Modal>
+      )}
+    </div>
+  );
 };
 export default HomeView;

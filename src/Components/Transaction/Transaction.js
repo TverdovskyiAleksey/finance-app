@@ -1,18 +1,19 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './Transaction.module.css';
-// import { contactsSelection, contactsOperations } from "redux/contacts";
+import moment from 'moment';
+import { validate } from 'indicative/validator';
+import { ReactSVG } from 'react-svg';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import TypeSwitch from './TypeSwitch';
 import Selector from './Selector';
 import DTPicker from './Datetime';
-import moment from 'moment';
-// import expensesOperations from 'Redux/expenses/expenses-operations';
-import { validate } from 'indicative/validator';
+import { addExpense } from '../../redux/expenses/expenses-operations';
 
 import DateIcon from './date_icon.svg';
 import CloseModalIcon from './close.svg';
-import { ReactSVG } from 'react-svg';
 
 const useForm = () => {
   const [state, setState] = useState('');
@@ -26,10 +27,11 @@ const Transaction = ({ closeModal }) => {
   const [date, setDate] = useState(() => moment()._d);
 
   const [category, setCategory] = useForm('category');
-  const [amount, setAmount] = useForm('amount');
-  const [comment, setComment] = useForm('comment');
+  const [sum, setSum] = useForm('sum');
+  const [description, setDescription] = useForm('description');
 
-  const type = isChecked ? 'income' : 'spending';
+  // const type = isChecked ? 'income' : 'spending';
+  const type = isChecked ? '+' : '-';
   const isTablet = window.innerWidth > 768;
   const dispatch = useDispatch();
 
@@ -38,19 +40,18 @@ const Transaction = ({ closeModal }) => {
   };
 
   const handleChange = evt => {
-    console.log(evt);
     const { name, value } = evt.target;
     switch (name) {
       case 'category':
         setCategory(value);
         break;
 
-      case 'amount':
-        setAmount(value);
+      case 'sum':
+        setSum(value);
         break;
 
-      case 'comment':
-        setComment(value);
+      case 'description':
+        setDescription(value);
         break;
 
       default:
@@ -59,33 +60,38 @@ const Transaction = ({ closeModal }) => {
   };
 
   const validateForm = data => {
-    const rules = {
-      type: 'required',
-      amount: 'required',
-      date: 'required|date',
-    };
+    const rules = !isChecked
+      ? {
+          type: 'required',
+          sum: 'required',
+          date: 'required|date',
+          category: 'required',
+        }
+      : {
+          type: 'required',
+          sum: 'required',
+          date: 'required|date',
+        };
 
     const messages = {
       required: field => `${field} is required`,
       'date.date': 'Use date format',
     };
 
-    validate(data, rules, messages);
-    // .then(console.log).catch(console.error);
+    validate(data, rules, messages)
+      .then(data => dispatch(addExpense(data)).then(closeModal))
+      .catch(error => toast.warn(error[0].message));
   };
 
   const handleSubmit = evt => {
-    const transaction = { type, category, amount, date, comment };
+    const transaction = { type, category, sum, date, description };
     evt.preventDefault();
     validateForm(transaction);
-    // dispatch(
-    //   expensesOperations.addExpense({ type, category, amount, date, comment }),
-    // );
-    closeModal();
   };
 
   return (
     <>
+      <ToastContainer />
       {isTablet && (
         <button
           className={styles.button_close}
@@ -108,7 +114,12 @@ const Transaction = ({ closeModal }) => {
             <label className={styles.label} htmlFor="select-category">
               Выберите категорию
             </label>
-            <Selector />
+            <Selector
+              id="select-category"
+              name="select"
+              onChange={setCategory}
+              // value={category}
+            />
           </div>
         )}
         <div className={styles.inputs_block}>
@@ -118,25 +129,24 @@ const Transaction = ({ closeModal }) => {
           <input
             className={styles.input}
             type="text"
-            name="amount"
+            name="sum"
             id="input-amount"
             placeholder="0.00"
-            value={amount}
+            value={sum}
             pattern="(^[0-9]*[1-9]+[0-9]*[\.,][0-9]*$)|(^[0-9]*[\.,][0-9]*[1-9]+[0-9]*$)|(^[0-9]*[1-9]+[0-9]*$)"
             title="Сумма должна содержать целые или дробные числа"
             required
             onChange={handleChange}
           />
-          {/* <div className={styles.dataContainer}> */}
+
           <label className={styles.label} htmlFor="input-date">
             date
           </label>
           <DTPicker className={styles.input} onChange={setDate} value={date} />
           <ReactSVG className={styles.dateIcon} src={DateIcon} />
-          {/* </div> */}
         </div>
         <label className={styles.label} htmlFor="input-comment">
-          comment{' '}
+          Comment
         </label>
         <input
           className={styles.comment}
@@ -144,7 +154,7 @@ const Transaction = ({ closeModal }) => {
           name="comment"
           id="input-comment"
           placeholder="Комментарий"
-          value={comment}
+          value={description}
           onChange={handleChange}
         />
         <button className={styles.button_submit} type="submit">
