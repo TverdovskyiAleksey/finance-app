@@ -151,7 +151,7 @@ const Transaction = ({ closeModal }) => {
         <input
           className={styles.comment}
           type="text"
-          name="comment"
+          name="description"
           id="input-comment"
           placeholder="Комментарий"
           value={description}
