@@ -54,7 +54,7 @@ function Navigation() {
       {sizeScreen <= 767 && (
         <NavLink
           exact
-          to="/home#currency"
+          to="/currency"
           className={styles.navLink}
           activeClassName={styles.navLinkActive}
         >

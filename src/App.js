@@ -6,8 +6,9 @@ import LoginView from './Views/LoginView';
 import RegisterView from './Views/RegisterView';
 import StatisticView from './Views/StatisticView';
 import HomeView from './Views/HomeView';
+import CurrencyView from './Views/CurrencyView';
 import AppBar from './Components/AppBar';
-import "./fonts.css";
+import './fonts.css';
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
         </PrivateRoute>
         <PrivateRoute>
           <StatisticView exact path="/statistic" redirectTo="/login" />
+        </PrivateRoute>
+        <PrivateRoute>
+          <CurrencyView exact path="/currency" redirectTo="/login" />
         </PrivateRoute>
       </Switch>
     </Container>

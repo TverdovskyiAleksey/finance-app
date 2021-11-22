@@ -32,7 +32,7 @@ const Transaction = ({ closeModal }) => {
 
   // const type = isChecked ? 'income' : 'spending';
   const type = isChecked ? '+' : '-';
-  const isTablet = window.innerWidth > 768;
+  const isTablet = window.innerWidth > 767;
   const dispatch = useDispatch();
 
   const handleCheckboxChange = evt => {
