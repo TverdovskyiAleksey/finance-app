@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { expensesSelectors } from '../../../redux/expenses';
+import { expensesSelectors } from '../../../Redux/expenses';
 import styles from './Balance.module.css';
 
 const Balance = () => {
