@@ -1,8 +1,12 @@
 import Statistic from '../Components/Statistic/Stats';
-
-const StatisticView = () => (  
-    <Statistic />  
-);
+import Sidebar from '../Components/Sidebar';
+const StatisticView = () => {
+  return (
+    <>
+      <Sidebar />
+      <Statistic />
+    </>
+  );
+};
 
 export default StatisticView;
-
