@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import TypeSwitch from './TypeSwitch';
 import Selector from './Selector';
 import DTPicker from './Datetime';
-import { addExpense } from '../../redux/expenses/expenses-operations';
+import { addExpense } from '../../Redux/expenses/expenses-operations';
 
 import DateIcon from './date_icon.svg';
 import CloseModalIcon from './close.svg';
@@ -62,16 +62,16 @@ const Transaction = ({ closeModal }) => {
   const validateForm = data => {
     const rules = !isChecked
       ? {
-          type: 'required',
-          sum: 'required',
-          date: 'required|date',
-          category: 'required',
-        }
+        type: 'required',
+        sum: 'required',
+        date: 'required|date',
+        category: 'required',
+      }
       : {
-          type: 'required',
-          sum: 'required',
-          date: 'required|date',
-        };
+        type: 'required',
+        sum: 'required',
+        date: 'required|date',
+      };
 
     const messages = {
       required: field => `${field} is required`,
@@ -118,7 +118,7 @@ const Transaction = ({ closeModal }) => {
               id="select-category"
               name="select"
               onChange={setCategory}
-              // value={category}
+            // value={category}
             />
           </div>
         )}

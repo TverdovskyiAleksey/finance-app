@@ -1,7 +1,10 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-axios.defaults.baseURL = 'https://localhost:3000';
+axios.defaults.baseURL = 'https://finance-app-south-back.herokuapp.com';
+// axios.defaults.baseURL = 'http://localhost:3000';
 
 const token = {
   set(token) {
@@ -12,34 +15,51 @@ const token = {
   },
 };
 
-const register = createAsyncThunk('auth/register', async credentials => {
+const options = {
+  autoClose: 3000,
+  hideProgressBar: false,
+  position: toast.POSITION.TOP_RIGHT,
+  pauseOnHover: true,
+  closeOnClick: true,
+};
+
+const register = createAsyncThunk('auth/register', async (credentials, { rejectWithValue }) => {
   try {
-    const { data } = await axios.post('/users/signup', credentials);
+    const { data } = await axios.post('/api/auth/register', credentials);
     token.set(data.token);
 
     return data;
   } catch (error) {
-    // TODO: Add error.message
+    if (error.response.status === 400) {
+      toast.error("Creation error, please try again", options);
+    } else if (error.response.status === 500) {
+      toast.error("Server error, please try later", options);
+    } else {
+      toast.error(`${error.message}`, options);
+    }
+    return rejectWithValue(error);
   }
 });
 
-const logIn = createAsyncThunk('auth/login', async credentials => {
+const logIn = createAsyncThunk('auth/login', async (credentials, { rejectWithValue }) => {
   try {
-    const { data } = await axios.post('/users/login', credentials);
+    const { data } = await axios.post('/api/auth/login', credentials);
     token.set(data.token);
 
     return data;
   } catch (error) {
-    // TODO: Add error.message
+    toast.error("Please try again", options);
+    return rejectWithValue(error);
   }
 });
 
-const logOut = createAsyncThunk('auth/logout', async () => {
+const logOut = createAsyncThunk('auth/logout', async (_, { rejectWithValue }) => {
   try {
-    await axios.post('/users/logout');
+    await axios.post('/api/auth/logout');
     token.unset();
   } catch (error) {
-    // TODO: Add error.message
+    toast.error("Hey! You can't log out!", options);
+    return rejectWithValue(error);
   }
 });
 
@@ -50,14 +70,16 @@ const fetchCarrentUser = createAsyncThunk(
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
+      toast('Please login or register!', options);
       return thunkAPI.rejectWithValue();
     }
     token.set(persistedToken);
     try {
-      const { data } = await axios.get('/users/current');
+      const { data } = await axios.get('api/users/current');
       return data;
     } catch (error) {
-      // TODO: Add error.message
+      toast('Authorization timed out!', options);
+      return thunkAPI.rejectWithValue();
     }
   },
 );
