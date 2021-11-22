@@ -6,8 +6,9 @@ import LoginView from './Views/LoginView';
 import RegisterView from './Views/RegisterView';
 import StatisticView from './Views/StatisticView';
 import HomeView from './Views/HomeView';
+import CurrencyView from './Views/CurrencyView';
 import AppBar from './Components/AppBar';
-import "./fonts.css";
+import './fonts.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -22,12 +23,15 @@ function App() {
         <PublicRoute exact path="/register" restricted>
           <RegisterView />
         </PublicRoute>
-        <PrivateRoute>
-          <HomeView exact path="/home" redirectTo="/login" />
-        </PrivateRoute>
-        <PrivateRoute>
-          <StatisticView exact path="/statistic" redirectTo="/login" />
-        </PrivateRoute>
+        {/* <PrivateRoute> */}
+        <HomeView exact path="/home" redirectTo="/login" />
+        {/* </PrivateRoute> */}
+        {/* <PrivateRoute> */}
+        <StatisticView exact path="/statistic" redirectTo="/login" />
+        {/* </PrivateRoute> */}
+        {/* <PrivateRoute> */}
+        <CurrencyView exact path="/currency" redirectTo="/login" />
+        {/* </PrivateRoute> */}
       </Switch>
       <ToastContainer />
     </Container>
