@@ -49,6 +49,7 @@ const customStyles = {
     ...provided,
     background: 'transparent',
     height: '100%',
+    backdropFilter: 'blur(0px)',
   }),
 
   placeholder: (provided, state) => ({

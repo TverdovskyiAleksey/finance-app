@@ -4,18 +4,14 @@
 @media screen and (min-width: 768px) {
   .sidebar {
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 204px;
-    justify-content: end;
+    justify-content: space-between;
     margin-bottom: 40px;
-    padding-top: 10px;
+    // padding-top: 10px;
   }
 }
-// and (max-width: 1279px)
 @media screen and (min-width: 1280px) {
   .sidebar {
     display: block;
-    padding-top: 30px;
+    // padding-top: 30px;
   }
 }
