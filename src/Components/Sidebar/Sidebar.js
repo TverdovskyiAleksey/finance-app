@@ -1,7 +1,7 @@
 import Media from 'react-media';
-import Navigation from '../Navigation';
+import Navigation from './Navigation';
 import Currency from './Currency';
-import Balance from '../Balance';
+import Balance from './Balance';
 import './Sidebar.scss';
 
 export default function Sidebar() {

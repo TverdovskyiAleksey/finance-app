@@ -1,0 +1,41 @@
+@value styles: '../../../variables.module.css';
+@value white-text-color, primary-text-color, font-family-main, font-family-secondary, font-weight-bold, font-weight-regular, font-size-30, font-size-18, font-size-16, line-color, expenditure-text-color, income-text-color, light-text-color-3 from styles;
+
+body {
+  background-color: #e7eaf2;
+}
+
+.balance {
+  width: 280px;
+  height: 80px;
+  padding: 8px 40px 13px;
+  display: flex;
+  flex-direction: column;
+  color: light-text-color-3;
+  background: white-text-color;
+  border-radius: 30px;
+}
+.total {
+  margin: 0;
+  font-family: font-family-main;
+  font-size: font-size-30;
+  font-weight: font-weight-bold;
+  line-height: 1.5;
+  color: primary-text-color;
+}
+.currency {
+  font-weight: font-weight-regular;
+}
+
+@media screen and (min-width: 768px) {
+  .balance {
+    width: 334px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .balance {
+    width: 350px;
+    margin-bottom: 30px;
+  }
+}
