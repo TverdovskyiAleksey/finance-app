@@ -110,6 +110,12 @@ h1 {
   }
 }
 
+@media screen and (min-width: 1280px) {
+  .regImg {
+    width: 452px;
+  }
+}
+
 .regRight {
   width: 100%;
   padding: 52px 95px 52px 95px;
@@ -195,7 +201,7 @@ h1 {
   padding-left: 44px;
 }
 
-@media screen and (min-width: 320px) {
+@media screen and (max-width: 767px) {
   .input {
     width: 280px;
   }
@@ -274,4 +280,15 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+progress {
+  width: 100%;
+}
+
+.error {
+  margin: 0px;
+  font-size: 14px;
+  color: red;
+  bottom: 0;
 }
