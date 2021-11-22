@@ -23,45 +23,56 @@ const options = {
   closeOnClick: true,
 };
 
-const register = createAsyncThunk('auth/register', async (credentials, { rejectWithValue }) => {
-  try {
-    const { data } = await axios.post('/api/auth/register', credentials);
-    token.set(data.token);
+const register = createAsyncThunk(
+  'auth/register',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/api/auth/register', credentials);
+      token.set(data.token);
 
-    return data;
-  } catch (error) {
-    if (error.response.status === 400) {
-      toast.error("Creation error, please try again", options);
-    } else if (error.response.status === 500) {
-      toast.error("Server error, please try later", options);
-    } else {
-      toast.error(`${error.message}`, options);
+      return data;
+    } catch (error) {
+      if (error.response.status === 400) {
+        toast.error('Creation error, please try again', options);
+      } else if (error.response.status === 500) {
+        toast.error('Server error, please try later', options);
+      } else {
+        toast.error(`${error.message}`, options);
+      }
+      return rejectWithValue(error);
     }
-    return rejectWithValue(error);
-  }
-});
+  },
+);
 
-const logIn = createAsyncThunk('auth/login', async (credentials, { rejectWithValue }) => {
-  try {
-    const { data } = await axios.post('/api/auth/login', credentials);
-    token.set(data.token);
+const logIn = createAsyncThunk(
+  'auth/login',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/api/auth/login', credentials);
+      token.set(data.token);
+      console.log(data);
+      return data;
+    } catch (error) {
+      toast.error('Please try again', options);
+      return rejectWithValue(error);
+    }
+  },
+);
 
-    return data;
-  } catch (error) {
-    toast.error("Please try again", options);
-    return rejectWithValue(error);
-  }
-});
-
-const logOut = createAsyncThunk('auth/logout', async (_, { rejectWithValue }) => {
-  try {
-    await axios.post('/api/auth/logout');
-    token.unset();
-  } catch (error) {
-    toast.error("Hey! You can't log out!", options);
-    return rejectWithValue(error);
-  }
-});
+const logOut = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      const result = await axios.post('/api/auth/logout');
+      console.log(result);
+      token.unset();
+      return result;
+    } catch (error) {
+      toast.error("Hey! You can't log out!", options);
+      return rejectWithValue(error);
+    }
+  },
+);
 
 const fetchCarrentUser = createAsyncThunk(
   'auth/refresh',

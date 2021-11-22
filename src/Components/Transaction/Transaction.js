@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import TypeSwitch from './TypeSwitch';
 import Selector from './Selector';
 import DTPicker from './Datetime';
-import { addExpense } from '../../redux/expenses/expenses-operations';
+import { addExpense } from '../../Redux/expenses/expenses-operations';
 
 import DateIcon from './date_icon.svg';
 import CloseModalIcon from './close.svg';
