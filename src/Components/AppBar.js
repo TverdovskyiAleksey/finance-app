@@ -1,6 +1,9 @@
 import { useSelector } from 'react-redux';
 import Header from './Header';
 import { authSelectors } from '../Redux/auth';
+import LoginView from '../Views/LoginView';
+import HomeView from '../Views/HomeView';
+// import LoginView from '../Views/LoginView';
 // import { display, style } from '@mui/system';
 
 const styles = {
@@ -11,16 +14,11 @@ const styles = {
   },
 };
 
-
 export default function AppBar() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-
-  console.log(isLoggedIn);
   return (
     <header className={styles.header}>
-     
-         <Header/>
-      
+      {isLoggedIn ? <HomeView /> : null}
     </header>
   );
 }
