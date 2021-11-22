@@ -18,24 +18,23 @@ const getTotal = state => {
 const getVisibleExpenses = createSelector(
   [getExpenses, getFilterReducer],
   (items, filter) => {
-    // const normalizedFilter = filter.toLowerCase();
     const m = `${filter} ,2021`;
+    // const m = `${filter.month} ,${filter.year}`;
     const thisMonthStart = moment(m).startOf('month');
     const thisMonthEnd = moment(m).endOf('month');
     return items.filter(({ date }) => {
-      console.log(thisMonthStart);
-      console.log(thisMonthEnd);
-      console.log(moment(date));
-      console.log(
-        moment(date).isBetween(thisMonthStart, thisMonthEnd, undefined, '[]'),
-      );
+      // console.log(thisMonthStart);
+      // console.log(thisMonthEnd);
+      // console.log(moment(date));
+      // console.log(
+      //   moment(date).isBetween(thisMonthStart, thisMonthEnd, undefined, '[]'),
+      // );
       return moment(date).isBetween(
         thisMonthStart,
         thisMonthEnd,
         undefined,
         '[]',
       );
-      // return moment(date);
     });
   },
 );
