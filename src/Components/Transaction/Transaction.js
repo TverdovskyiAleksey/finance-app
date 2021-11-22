@@ -91,7 +91,7 @@ const Transaction = ({ closeModal }) => {
 
   return (
     <>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       {isTablet && (
         <button
           className={styles.button_close}

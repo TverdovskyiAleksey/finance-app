@@ -16,12 +16,22 @@
 @media screen and (min-width: 768px) {
   .Container {
     width: 768px;
+    background-image: url('../Auth/images/Ellipse2.png'),
+      url('../Auth/images/Ellipse1.png');
+    background-repeat: no-repeat;
+    background-position-x: 392px, -154px;
+    background-position-y: -98px, 300px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .Container {
     width: 1280px;
+    background-image: url('../Auth/images/Ellipse2.png'),
+      url('../Auth/images/Ellipse1.png');
+    background-repeat: no-repeat;
+    background-position-x: 764px, -145px;
+    background-position-y: -97px, 389px;
   }
 }
 /* .Container {
