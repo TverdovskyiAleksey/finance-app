@@ -8,6 +8,8 @@ import StatisticView from './Views/StatisticView';
 import HomeView from './Views/HomeView';
 import AppBar from './Components/AppBar';
 import "./fonts.css";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
           <StatisticView exact path="/statistic" redirectTo="/login" />
         </PrivateRoute>
       </Switch>
+      <ToastContainer />
     </Container>
   );
 }
