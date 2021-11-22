@@ -9,37 +9,28 @@ import styles from '../Components/Auth/Auth.module.css';
 import logimg from '../Components/Auth/images/login-img.png';
 import logo from '../Components/Auth/images/logo.png';
 import pas from '../Components/Auth/images/lock.svg';
-import acc from '../Components/Auth/images/account_box.svg';
 import mail from '../Components/Auth/images/email.svg';
 
-export default function RegisterView() {
+export default function LoginView() {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [rePassword, setRePassword] = useState('');
 
   const handelChange = ({ target: { name, value } }) => {
     switch (name) {
-      case 'name':
-        return setName(value);
       case 'email':
         return setEmail(value);
       case 'password':
         return setPassword(value);
-      case 'rePassword':
-        return setRePassword(value);
       default:
         return;
     }
   };
   const handelSubmit = e => {
     e.preventDefault();
-    dispatch(authOperations.register({ name, email, password, rePassword }));
-    setName('');
+    dispatch(authOperations.logIn({ email, password }));
     setEmail('');
     setPassword('');
-    setRePassword('');
   };
   return (
     <div className={styles.register}>
@@ -86,7 +77,7 @@ export default function RegisterView() {
               <button className={styles.btnReg} type="submit">
                 Вход
               </button>
-              <Link to="/Register" className={styles.button}>
+              <Link to="/register" className={styles.button}>
                 Регистрация
               </Link>
             </div>
@@ -96,3 +87,7 @@ export default function RegisterView() {
     </div>
   );
 }
+// name(pin):"test_email"
+// email(pin):"test_email@gmail.com"
+// password(pin):"password"
+// rePassword(pin):"password"
