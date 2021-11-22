@@ -15,7 +15,6 @@ const HomeView = () => {
   };
   return (
     <div className={stylesHome.Container}>
-      {/* <h1>Welcome home</h1> */}
       <Sidebar />
       <div>
         <Expenses />

@@ -63,10 +63,8 @@ const logOut = createAsyncThunk(
   'auth/logout',
   async (_, { rejectWithValue }) => {
     try {
-      const result = await axios.post('/api/auth/logout');
-      console.log(result);
+      await axios.get('/api/auth/logout');
       token.unset();
-      return result;
     } catch (error) {
       toast.error("Hey! You can't log out!", options);
       return rejectWithValue(error);
