@@ -4,7 +4,7 @@ import styles from './Transaction.module.css';
 import moment from 'moment';
 import { validate } from 'indicative/validator';
 import { ReactSVG } from 'react-svg';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import TypeSwitch from './TypeSwitch';
