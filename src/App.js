@@ -9,6 +9,8 @@ import HomeView from './Views/HomeView';
 import CurrencyView from './Views/CurrencyView';
 import AppBar from './Components/AppBar';
 import './fonts.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -31,6 +33,7 @@ function App() {
           <CurrencyView exact path="/currency" redirectTo="/login" />
         </PrivateRoute>
       </Switch>
+      <ToastContainer />
     </Container>
   );
 }
