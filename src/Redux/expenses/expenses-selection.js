@@ -34,8 +34,11 @@ const getVisibleExpenses = createSelector(
   [getFilterReducer, getExpenses],
   (filter, items) => {
     const m = months.findIndex(month => month.name === filter) + 1;
+    // console.log(m);
+    // console.log(filter);
     const thisMonthStart = moment(`${m}-01-2021`).startOf('month');
     const thisMonthEnd = moment(`${m}-01-2021`).endOf('month');
+    // console.log(thisMonthStart);
     if (filter) {
       return items.filter(({ date }) => {
         return moment(date).isBetween(

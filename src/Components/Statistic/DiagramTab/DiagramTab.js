@@ -23,6 +23,7 @@ export default function DiagramTab() {
 
   return (
     <div>
+      <Filter />
       <ul className={styles.list}>
         <li className={styles.nameElement}>Категория</li>
         <li className={styles.nameElement}>Сумма</li>

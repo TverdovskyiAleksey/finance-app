@@ -16,7 +16,7 @@ const items = createReducer([], {
     state.filter(({ id }) => id !== payload),
 });
 
-const filter = createReducer(null, {
+const filterReducer = createReducer(null, {
   [updateFilterAction]: (_, { payload }) => payload,
 });
 
@@ -43,7 +43,7 @@ const error = createReducer(null, {
 
 export default combineReducers({
   items,
-  filter,
+  filterReducer,
   loading,
   error,
 });
