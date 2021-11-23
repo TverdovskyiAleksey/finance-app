@@ -13,14 +13,9 @@ const options = {
 
 export const fetchExpenses = createAsyncThunk(
   'expense/fetchExpense',
-  async (_, { rejectWithValue }) => {
-    try {
-      const expenses = await expensesAPI.fetchExpenses;
-      return expenses;
-    } catch (error) {
-      toast.error(`${error.message}`, options);
-      return rejectWithValue(error);
-    }
+  async () => {
+    const expenses = await expensesAPI.fetchExpenses();
+    return expenses;
   }
 )
 
@@ -31,7 +26,7 @@ export const addExpense = createAsyncThunk(
       const expense = await expensesAPI.addExpense(data);
       return expense;
     } catch (error) {
-      toast.error(`${error.message}`, options);
+      toast.error(`${error}`, options);
       return rejectWithValue(error);
     }
   }
@@ -44,7 +39,7 @@ export const deleteExpense = createAsyncThunk(
       await expensesAPI.deleteExpense(id);
       return id;
     } catch (error) {
-      toast.error(`${error.message}`, options);
+      toast.error(`${error}`, options);
       return rejectWithValue(error);
     }
   }

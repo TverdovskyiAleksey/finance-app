@@ -62,25 +62,25 @@ const Transaction = ({ closeModal }) => {
   const validateForm = data => {
     const rules = !isChecked
       ? {
-          type: 'required',
-          sum: 'required',
-          date: 'required|date',
-          category: 'required',
-        }
+        type: 'required',
+        sum: 'required',
+        date: 'required|date',
+        category: 'required',
+      }
       : {
-          type: 'required',
-          sum: 'required',
-          date: 'required|date',
-        };
+        type: 'required',
+        sum: 'required',
+        date: 'required|date',
+      };
 
-    const messages = {
-      required: field => `${field} is required`,
-      'date.date': 'Use date format',
-    };
+    // const messages = {
+    //   required: field => `${field} is required`,
+    //   'date.date': 'Use date format',
+    // };
 
-    validate(data, rules, messages)
+    validate(data, rules)
       .then(data => dispatch(addExpense(data)).then(closeModal))
-      .catch(error => toast.warn(error[0].message));
+      .catch(error => toast.warn(error));
   };
 
   const handleSubmit = evt => {
@@ -118,7 +118,7 @@ const Transaction = ({ closeModal }) => {
               id="select-category"
               name="select"
               onChange={setCategory}
-              // value={category}
+            // value={category}
             />
           </div>
         )}

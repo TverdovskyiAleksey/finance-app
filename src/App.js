@@ -2,7 +2,7 @@ import Container from './Components/Container';
 import { Switch } from 'react-router-dom';
 import PublicRoute from './Routes/PublicRoute';
 import PrivateRoute from './Routes/PrivateRoute';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 // import LoginView from './Views/LoginView';
 // import RegisterView from './Views/RegisterView';
 // import StatisticView from './Views/StatisticView';
@@ -31,37 +31,36 @@ function App() {
   }, [dispatch]);
 
   return (
-    !isRefreshing && (
-      <Container>
-        <AppBar />
-
-        <Switch>
-          <Suspense fallback={<p>Loading...</p>}>
-            <PublicRoute exact path="/login" restricted>
-              <LoginView />
-            </PublicRoute>
-            <PublicRoute exact path="/register" restricted>
-              <RegisterView />
-            </PublicRoute>
-            <PrivateRoute>
-              <HomeView exact path="/home" redirectTo="/login" restricted />
-            </PrivateRoute>
-            <PrivateRoute>
-              <StatisticView
-                exact
-                path="/statistic"
-                redirectTo="/login"
-                restricted
-              />
-            </PrivateRoute>
-            <PrivateRoute>
-              <CurrencyView exact path="/currency" />
-            </PrivateRoute>
-          </Suspense>
-        </Switch>
-        <ToastContainer />
-      </Container>
-    )
+    <Container>
+      {isRefreshing ? (
+        <h1>Preparing information...</h1>
+      ) : (
+        <>
+          <AppBar />
+          <Switch>
+            <Suspense fallback={<p>Загружаем...</p>}>
+              <PublicRoute exact path="/login" restricted>
+                <LoginView />
+              </PublicRoute>
+              <PublicRoute exact path="/register" restricted>
+                <RegisterView />
+              </PublicRoute>
+              <PrivateRoute>
+                <HomeView exact path="/home" redirectTo="/login" restricted />
+              </PrivateRoute >
+              <PrivateRoute>
+                <StatisticView exact path="/statistic" />
+              </PrivateRoute>
+              <PrivateRoute>
+                <CurrencyView exact path="/currency" />
+              </PrivateRoute>
+            </Suspense>
+          </Switch >
+        </>
+      )
+      }
+      <ToastContainer />
+    </Container >
   );
 }
 
