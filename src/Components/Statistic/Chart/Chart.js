@@ -4,7 +4,8 @@ import { Doughnut, defaults } from 'react-chartjs-2';
 import styles from './Chart.module.css';
 import { useSelector } from 'react-redux';
 import { expensesSelectors } from '../../../Redux/expenses';
-import { fetchExpenses } from '../../../Redux/expenses';
+// import { fetchExpenses } from '../../../Redux/expenses';
+import { expensesOperations } from '../../../Redux/expenses';
 import { useDispatch } from 'react-redux';
 
 import db from '../db.json';
@@ -17,9 +18,10 @@ export default function Chart() {
   const arrColors = transactionsList.map(el => el.color);
   // const expenses = useSelector(expensesSelectors.getExpenses);
   const expenses = useSelector(expensesSelectors.getVisibleExpenses);
-  // console.log(expenses);
-  // const total = useSelector(expensesSelectors.getTotal);
-  const total = useSelector(expensesSelectors.getVisibleTotal);
+  // const total = useSelector(expensesSelectors.getVisibleTotal);
+  const total = useSelector(expensesSelectors.getTotal);
+  const dispatch = useDispatch();
+  useEffect(() => dispatch(expensesOperations.fetchExpenses()), [dispatch]);
   const consumption = expenses
     .filter(expense => expense.type === '-')
     .map(el => el.category);

@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 axios.defaults.baseURL = 'https://finance-app-south-back.herokuapp.com';
-// axios.defaults.baseURL = 'http://localhost:3000';
+// axios.defaults.baseURL = 'http://localhost:3002';
 
 const token = {
   set(token) {

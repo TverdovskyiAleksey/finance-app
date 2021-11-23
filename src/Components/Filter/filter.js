@@ -4,9 +4,10 @@ import { useDispatch } from 'react-redux';
 import { fetchExpenses } from '../../Redux/expenses/expenses-operations';
 import { expensesSelectors, updateFilterAction } from '../../Redux/expenses';
 import { useSelector } from 'react-redux';
-// import styles from './Modal.module.css';
+import styles from './filter.module.css';
 
 const months = [
+  { id: '00', name: '' },
   { id: '01', name: 'Январь' },
   { id: '02', name: 'Февраль' },
   { id: '03', name: 'Март' },
@@ -21,7 +22,7 @@ const months = [
   { id: '12', name: 'Декабрь' },
 ];
 
-// const years = ['2021', '2020', '2019'];
+const years = ['', '2021', '2020', '2019'];
 
 // const useSelect = () => {
 //   const [state, setState] = useState('');
@@ -53,12 +54,25 @@ const Filter = () => {
   useEffect(() => dispatch(fetchExpenses()), [dispatch]);
   const value = useSelector(expensesSelectors.getFilterReducer);
   const onChange = e => dispatch(updateFilterAction(e.target.value));
+
   return (
-    <div>
-      <select name="month" value={value} onChange={onChange}>
+    <div className={styles.container}>
+      <select
+        name="month"
+        value={value}
+        onChange={onChange}
+        className={styles.select}
+      >
         {months.map(option => (
           <option key={option.id} value={option.name}>
             {option.name}
+          </option>
+        ))}
+      </select>
+      <select name="year" className={styles.select}>
+        {years.map(option => (
+          <option key={option} value={option}>
+            {option}
           </option>
         ))}
       </select>

@@ -16,7 +16,7 @@ const items = createReducer([], {
     state.filter(({ id }) => id !== payload),
 });
 
-const filter = createReducer('', {
+const filter = createReducer(null, {
   [updateFilterAction]: (_, { payload }) => payload,
 });
 

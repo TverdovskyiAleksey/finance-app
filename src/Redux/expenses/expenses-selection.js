@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import moment from 'moment';
 
-const getExpenses = state => state.expenses.items;
+const getExpenses = state => state.expenses.items.expenses;
 
 const getLoading = state => state.expenses.loading;
 
@@ -36,24 +36,28 @@ const getVisibleExpenses = createSelector(
     const m = months.findIndex(month => month.name === filter) + 1;
     const thisMonthStart = moment(`${m}-01-2021`).startOf('month');
     const thisMonthEnd = moment(`${m}-01-2021`).endOf('month');
-    return items.filter(({ date }) => {
-      return moment(date).isBetween(
-        thisMonthStart,
-        thisMonthEnd,
-        undefined,
-        '[]',
-      );
-    });
+    if (filter) {
+      return items.filter(({ date }) => {
+        return moment(date).isBetween(
+          thisMonthStart,
+          thisMonthEnd,
+          undefined,
+          '[]',
+        );
+      });
+    } else {
+      return items;
+    }
   },
 );
 
-const getVisibleTotal = state => {
-  const expenses = getVisibleExpenses(state);
+// const getVisibleTotal = state => {
+//   const expenses = getVisibleExpenses(state);
 
-  return expenses.reduce((acc, item) => {
-    return item.type === '-' ? acc - item.sum : acc + item.sum;
-  }, 0);
-};
+//   return expenses.reduce((acc, item) => {
+//     return item.type === '-' ? acc - item.sum : acc + item.sum;
+//   }, 0);
+// };
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -62,5 +66,5 @@ export default {
   getExpenses,
   getTotal,
   getFilterReducer,
-  getVisibleTotal,
+  // getVisibleTotal,
 };

@@ -1,23 +1,17 @@
+import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
+import { authSelectors } from '../Redux/auth';
 
-function PrivateRoute({ children, isAuthenticated, ...rest }) {
+export default function PrivateRoute({
+  component: Component,
+  redirectTo,
+  children,
+  ...routeProps
+}) {
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        isAuthenticated ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/login',
-              state: { from: location },
-            }}
-          />
-        )
-      }
-    />
+    <Route {...routeProps}>
+      {isLoggedIn ? children : <Redirect to="login" />}
+    </Route>
   );
 }
-
-export default PrivateRoute;
