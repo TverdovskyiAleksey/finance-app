@@ -31,12 +31,14 @@ function App() {
   }, [dispatch]);
 
   return (
-    !isRefreshing && (
-      <Container>
-        <AppBar />
-
-        <Switch>
-          <Suspense fallback={<p>Loading...</p>}>
+    <Container>
+      {isRefreshing ? (
+        <h1>Preparing information...</h1>
+      ) : (
+        <>
+          <AppBar />
+          <Switch>
+            {/* <Suspense fallback={<p>Загружаем...</p>}> */}
             <PublicRoute exact path="/login" restricted>
               <LoginView />
             </PublicRoute>
@@ -45,23 +47,20 @@ function App() {
             </PublicRoute>
             <PrivateRoute>
               <HomeView exact path="/home" redirectTo="/login" restricted />
-            </PrivateRoute>
+            </PrivateRoute >
             <PrivateRoute>
-              <StatisticView
-                exact
-                path="/statistic"
-                redirectTo="/login"
-                restricted
-              />
+              <StatisticView exact path="/statistic" />
             </PrivateRoute>
             <PrivateRoute>
               <CurrencyView exact path="/currency" />
             </PrivateRoute>
-          </Suspense>
-        </Switch>
-        <ToastContainer />
-      </Container>
-    )
+            {/* </Suspense> */}
+          </Switch >
+        </>
+      )
+      }
+      <ToastContainer />
+    </Container >
   );
 }
 
