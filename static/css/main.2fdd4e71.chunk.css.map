@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/Components/Container/Container.module.css"],"names":[],"mappings":"AAAA,4BACE,YAAa,CACb,YAAa,CACb,gBAAiB,CACjB,iBAAkB,CAClB,YACF","file":"main.2fdd4e71.chunk.css","sourcesContent":[".Container {\r\n  width: 1280px;\r\n  height: 720px;\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  padding: 30px;\r\n}\r\n"]}

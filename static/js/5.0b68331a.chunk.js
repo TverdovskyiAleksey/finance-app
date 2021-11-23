@@ -1,0 +1,2 @@
+(this["webpackJsonpgoit-react-hw-template"]=this["webpackJsonpgoit-react-hw-template"]||[]).push([[5],{767:function(t,e,n){t.exports={container:"Currency_container__2bHAQ"}},781:function(t,e,n){"use strict";n.r(e);var a=n(22),c=n(271),i=n(171),r=n(767),s=n.n(r),o=n(1);e.default=function(){return window.innerWidth>767?Object(o.jsx)(a.a,{to:{pathname:"/home"}}):Object(o.jsxs)("div",{className:s.a.container,children:[Object(o.jsx)(i.a,{}),Object(o.jsx)(c.a,{})]})}}}]);
+//# sourceMappingURL=5.0b68331a.chunk.js.map
