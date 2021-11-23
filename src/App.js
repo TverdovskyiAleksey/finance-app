@@ -39,15 +39,15 @@ function App() {
         <PublicRoute exact path="/register" restricted>
           <RegisterView />
         </PublicRoute>
-        <PrivateRoute>
-          <HomeView exact path="/home" />
-        </PrivateRoute>
-        <PrivateRoute>
-          <StatisticView exact path="/statistic" />
-        </PrivateRoute>
-        <PrivateRoute>
-          <CurrencyView exact path="/currency" />
-        </PrivateRoute>
+        {/* <PrivateRoute> */}
+        <HomeView exact path="/home" />
+        {/* </PrivateRoute> */}
+        {/* <PrivateRoute> */}
+        <StatisticView exact path="/statistic" />
+        {/* </PrivateRoute> */}
+        {/* <PrivateRoute> */}
+        <CurrencyView exact path="/currency" />
+        {/* </PrivateRoute> */}
       </Switch>
       <ToastContainer />
     </Container>

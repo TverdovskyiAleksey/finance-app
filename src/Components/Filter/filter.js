@@ -1,24 +1,24 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchExpenses } from '../../redux/expenses/expenses-operations';
-import { expensesSelectors, updateFilterAction } from '../../redux/expenses';
+import { fetchExpenses } from '../../Redux/expenses/expenses-operations';
+import { expensesSelectors, updateFilterAction } from '../../Redux/expenses';
 import { useSelector } from 'react-redux';
 // import styles from './Modal.module.css';
 
 const months = [
-  'February',
-  'January',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
+  { id: '01', name: 'Январь' },
+  { id: '02', name: 'Февраль' },
+  { id: '03', name: 'Март' },
+  { id: '04', name: 'Апрель' },
+  { id: '05', name: 'Май' },
+  { id: '06', name: 'Июнь' },
+  { id: '07', name: 'Июль' },
+  { id: '08', name: 'Август' },
+  { id: '09', name: 'Сентябрь' },
+  { id: '10', name: 'Октябрь' },
+  { id: '11', name: 'Ноябрь' },
+  { id: '12', name: 'Декабрь' },
 ];
 
 // const years = ['2021', '2020', '2019'];
@@ -52,16 +52,13 @@ const Filter = () => {
   const dispatch = useDispatch();
   useEffect(() => dispatch(fetchExpenses()), [dispatch]);
   const value = useSelector(expensesSelectors.getFilterReducer);
-  //   const date = useSelector(expensesSelectors.getFilterReducer);
-  // const valueMonth=date.month;
-  // const valueYear=date.year;
   const onChange = e => dispatch(updateFilterAction(e.target.value));
   return (
     <div>
       <select name="month" value={value} onChange={onChange}>
         {months.map(option => (
-          <option key={option} value={option}>
-            {option}
+          <option key={option.id} value={option.name}>
+            {option.name}
           </option>
         ))}
       </select>

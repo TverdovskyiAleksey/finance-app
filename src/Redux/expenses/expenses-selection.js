@@ -15,20 +15,28 @@ const getTotal = state => {
   }, 0);
 };
 
+const months = [
+  { id: '01', name: 'Январь' },
+  { id: '02', name: 'Февраль' },
+  { id: '03', name: 'Март' },
+  { id: '04', name: 'Апрель' },
+  { id: '05', name: 'Май' },
+  { id: '06', name: 'Июнь' },
+  { id: '07', name: 'Июль' },
+  { id: '08', name: 'Август' },
+  { id: '09', name: 'Сентябрь' },
+  { id: '10', name: 'Октябрь' },
+  { id: '11', name: 'Ноябрь' },
+  { id: '12', name: 'Декабрь' },
+];
+
 const getVisibleExpenses = createSelector(
-  [getExpenses, getFilterReducer],
-  (items, filter) => {
-    const m = `${filter} ,2021`;
-    // const m = `${filter.month} ,${filter.year}`;
-    const thisMonthStart = moment(m).startOf('month');
-    const thisMonthEnd = moment(m).endOf('month');
+  [getFilterReducer, getExpenses],
+  (filter, items) => {
+    const m = months.findIndex(month => month.name === filter) + 1;
+    const thisMonthStart = moment(`${m}-01-2021`).startOf('month');
+    const thisMonthEnd = moment(`${m}-01-2021`).endOf('month');
     return items.filter(({ date }) => {
-      // console.log(thisMonthStart);
-      // console.log(thisMonthEnd);
-      // console.log(moment(date));
-      // console.log(
-      //   moment(date).isBetween(thisMonthStart, thisMonthEnd, undefined, '[]'),
-      // );
       return moment(date).isBetween(
         thisMonthStart,
         thisMonthEnd,

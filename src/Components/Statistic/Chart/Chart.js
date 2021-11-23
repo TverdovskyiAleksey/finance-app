@@ -4,7 +4,7 @@ import { Doughnut, defaults } from 'react-chartjs-2';
 import styles from './Chart.module.css';
 import { useSelector } from 'react-redux';
 import { expensesSelectors } from '../../../Redux/expenses';
-import { fetchExpenses } from '../../../redux/expenses';
+import { fetchExpenses } from '../../../Redux/expenses';
 import { useDispatch } from 'react-redux';
 
 import db from '../db.json';
