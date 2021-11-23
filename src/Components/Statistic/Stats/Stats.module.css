@@ -6,7 +6,7 @@
   align-items: center;
   margin-right: auto;
   margin-left: auto;
-  background-color: background-gradient;
+  /* background-color: background-gradient; */
   border-radius: 4px;
 }
 
@@ -26,6 +26,6 @@
     margin: 0;
     margin-left: auto;
     padding: 40px 85px 0 23px;
-    box-shadow: 0 2px 5px 0px #21212150;
+    /* box-shadow: 0 2px 5px 0px #21212150; */
   }
 }

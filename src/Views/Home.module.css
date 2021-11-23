@@ -1,16 +1,26 @@
 .Container {
   display: block;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-/* @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .Container {
-    display: block;
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(50px);
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
   }
-} */
+}
 
 @media screen and (min-width: 1280px) {
   .Container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding-left: 85px;
+    padding-right: 85px;
+    padding-top: 40px;
   }
 }

@@ -17,8 +17,6 @@ const styles = {
 export default function AppBar() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
-    <header className={styles.header}>
-      {isLoggedIn ? <HomeView /> : null}
-    </header>
+    <header className={styles.header}>{isLoggedIn ? <Header /> : null}</header>
   );
 }
