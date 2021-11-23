@@ -31,24 +31,32 @@ function App() {
 
   return (
     <Container>
-      <AppBar />
-      <Switch>
-        <PublicRoute exact path="/login" redirectTo="/home" restricted>
-          <LoginView />
-        </PublicRoute>
-        <PublicRoute exact path="/register" restricted>
-          <RegisterView />
-        </PublicRoute>
-        <PrivateRoute>
-          <HomeView exact path="/home" />
-        </PrivateRoute>
-        <PrivateRoute>
-          <StatisticView exact path="/statistic" />
-        </PrivateRoute>
-        <PrivateRoute>
-          <CurrencyView exact path="/currency" />
-        </PrivateRoute>
-      </Switch>
+      {isRefreshing ? (
+        <h1>Preparing information...</h1>
+      ) : (
+        <>
+          <AppBar />
+          <Switch>
+            {/* <Suspense fallback={<p>Загружаем...</p>}> */}
+            <PublicRoute exact path="/login" restricted>
+              <LoginView />
+            </PublicRoute>
+            <PublicRoute exact path="/register" restricted>
+              <RegisterView />
+            </PublicRoute>
+            <PrivateRoute>
+              <HomeView exact path="/home" />
+            </PrivateRoute>
+            <PrivateRoute>
+              <StatisticView exact path="/statistic" />
+            </PrivateRoute>
+            <PrivateRoute>
+              <CurrencyView exact path="/currency" />
+            </PrivateRoute>
+            {/* </Suspense> */}
+          </Switch>
+        </>
+      )}
       <ToastContainer />
     </Container>
   );

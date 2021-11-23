@@ -1,6 +1,6 @@
 // import { createSelector } from 'reselect';
 
-const getExpenses = state => state.expenses.items;
+const getExpenses = state => state.expenses.items.expenses;
 
 const getLoading = state => state.expenses.loading;
 
