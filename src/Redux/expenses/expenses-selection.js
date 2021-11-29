@@ -5,12 +5,13 @@ const getExpenses = state => state.expenses.items.expenses;
 
 const getLoading = state => state.expenses.loading;
 
-const getFilterReducer = state => state.expenses.filterReducer;
+const getFilterMonthReducer = state => state.expenses.filterMonthReducer;
+const getFilterYearReducer = state => state.expenses.filterYearReducer;
 
 const getTotal = state => {
   const expenses = getExpenses(state);
 
-  return expenses.reduce((acc, item) => {
+  return expenses?.reduce((acc, item) => {
     return item.type === '-' ? acc - item.sum : acc + item.sum;
   }, 0);
 };
@@ -31,19 +32,23 @@ const months = [
 ];
 
 const getVisibleExpenses = createSelector(
-  [getFilterReducer, getExpenses],
-  (filter, items) => {
-    const m = months.findIndex(month => month.name === filter) + 1;
+  [getFilterMonthReducer, getFilterYearReducer, getExpenses],
+  (filterMonth, filterYear, items) => {
+    const m = months.findIndex(month => month.name === filterMonth) + 1;
     // console.log(m);
     // console.log(filter);
-    const thisMonthStart = moment(`${m}-01-2021`).startOf('month');
-    const thisMonthEnd = moment(`${m}-01-2021`).endOf('month');
+    const thisPeriodStart = filterMonth
+      ? moment(`${m}-01-${filterYear}`).startOf('month')
+      : moment(`01-01-${filterYear}`);
+    const thisPeriodEnd = filterMonth
+      ? moment(`${m}-01-${filterYear}`).endOf('month')
+      : moment(`12-31-${filterYear}`);
     // console.log(thisMonthStart);
-    if (filter) {
+    if (filterYear) {
       return items.filter(({ date }) => {
         return moment(date).isBetween(
-          thisMonthStart,
-          thisMonthEnd,
+          thisPeriodStart,
+          thisPeriodEnd,
           undefined,
           '[]',
         );
@@ -68,6 +73,7 @@ export default {
   getVisibleExpenses,
   getExpenses,
   getTotal,
-  getFilterReducer,
+  getFilterMonthReducer,
+  getFilterYearReducer,
   // getVisibleTotal,
 };

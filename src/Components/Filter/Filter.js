@@ -2,7 +2,11 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchExpenses } from '../../Redux/expenses/expenses-operations';
-import { expensesSelectors, updateFilterAction } from '../../Redux/expenses';
+import {
+  expensesSelectors,
+  updateMonthFilterAction,
+  updateYearFilterAction,
+} from '../../Redux/expenses';
 import { useSelector } from 'react-redux';
 import styles from './filter.module.css';
 
@@ -52,15 +56,17 @@ const Filter = () => {
   //   useEffect(() => {});
   const dispatch = useDispatch();
   useEffect(() => dispatch(fetchExpenses()), [dispatch]);
-  const value = useSelector(expensesSelectors.getFilterReducer);
-  const onChange = e => dispatch(updateFilterAction(e.target.value));
+  const valueMonth = useSelector(expensesSelectors.getFilterMonthReducer);
+  const valueYear = useSelector(expensesSelectors.getFilterYearReducer);
+  const onMonthChange = e => dispatch(updateMonthFilterAction(e.target.value));
+  const onYearChange = e => dispatch(updateYearFilterAction(e.target.value));
 
   return (
     <div className={styles.container}>
       <select
         name="month"
-        value={value}
-        onChange={onChange}
+        value={valueMonth}
+        onChange={onMonthChange}
         className={styles.select}
       >
         {months.map(option => (
@@ -70,14 +76,19 @@ const Filter = () => {
         ))}
       </select>
       {/* заменить фильтр по году */}
-      <select name="year" className={styles.select}>
+      <select
+        name="year"
+        className={styles.select}
+        value={valueYear}
+        onChange={onYearChange}
+      >
         {years.map(option => (
           <option key={option} value={option}>
             {option}
           </option>
         ))}
       </select>
-      {/* <select name="year" value={year} onChange={handleChange}>
+      {/* <select name="year" value={valueYear} onChange={onYearChange}>
         {years.map(option => (
           <option key={option} value={option}>
             {option}

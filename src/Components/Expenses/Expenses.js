@@ -37,7 +37,7 @@ const Expenses = () => {
               <Preloader />
             </div>
           )}
-          {expenses.length > 0 &&
+          {expenses?.length > 0 &&
             expenses.map(({ id, date, type, category, description, sum }) => (
               <tr key={id} className={styles.row}>
                 <td className={styles.item}>{date}</td>

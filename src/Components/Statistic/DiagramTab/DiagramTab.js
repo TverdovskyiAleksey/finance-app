@@ -11,12 +11,12 @@ const transactionsList = db.transactionsList;
 export default function DiagramTab() {
   // const expenses = useSelector(expensesSelectors.getExpenses);
   const expenses = useSelector(expensesSelectors.getVisibleExpenses);
-  const consumption = expenses.filter(expense => expense.type === '-');
-  const income = expenses.filter(expense => expense.type === '+');
-  const colorConsumption = transactionsList.slice(0, consumption.length);
+  const consumption = expenses?.filter(expense => expense.type === '-');
+  const income = expenses?.filter(expense => expense.type === '+');
+  const colorConsumption = transactionsList.slice(0, consumption?.length);
 
-  const sumConsumption = consumption.map(el => el.sum).reduce(add, 0);
-  const sumIncome = income.map(el => el.sum).reduce(add, 0);
+  const sumConsumption = consumption?.map(el => el.sum).reduce(add, 0);
+  const sumIncome = income?.map(el => el.sum).reduce(add, 0);
   function add(accumulator, a) {
     return accumulator + a;
   }
@@ -30,7 +30,7 @@ export default function DiagramTab() {
       </ul>
       <div className={styles.containers}>
         <ul className={styles.listTransaction}>
-          {colorConsumption.map(item => {
+          {colorConsumption?.map(item => {
             return (
               <li className={styles.transactionElements} key={item.id}>
                 <div
@@ -45,8 +45,8 @@ export default function DiagramTab() {
         </ul>
 
         <ul className={styles.listTransaction}>
-          {consumption.length > 0 ? (
-            consumption.map(item => {
+          {consumption?.length > 0 ? (
+            consumption?.map(item => {
               return (
                 <li className={styles.transactionElement} key={item.id}>
                   <div className={styles.category}>{item.category}</div>

@@ -7,7 +7,10 @@ import {
   deleteExpense,
 } from './expenses-operations';
 
-import { updateFilterAction } from './expenses-action';
+import {
+  updateMonthFilterAction,
+  updateYearFilterAction,
+} from './expenses-action';
 
 const items = createReducer([], {
   [fetchExpenses.fulfilled]: (_, { payload }) => payload,
@@ -16,10 +19,13 @@ const items = createReducer([], {
     state.filter(({ id }) => id !== payload),
 });
 
-const filterReducer = createReducer(null, {
-  [updateFilterAction]: (_, { payload }) => payload,
+const filterMonthReducer = createReducer(null, {
+  [updateMonthFilterAction]: (_, { payload }) => payload,
 });
 
+const filterYearReducer = createReducer(null, {
+  [updateYearFilterAction]: (_, { payload }) => payload,
+});
 // const filter = createReducer({month:'',year:''}, {
 //   [updateFilterAction]: (state, { payload }) =>  [...state, payload],
 // });
@@ -43,7 +49,8 @@ const error = createReducer(null, {
 
 export default combineReducers({
   items,
-  filterReducer,
+  filterMonthReducer,
+  filterYearReducer,
   loading,
   error,
 });

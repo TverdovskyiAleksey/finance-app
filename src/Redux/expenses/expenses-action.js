@@ -16,4 +16,5 @@ import { createAction } from '@reduxjs/toolkit';
 // );
 // export const deleteExpenseError = createAction('expense/deleteExpenseError');
 
-export const updateFilterAction = createAction('updateFilter');
+export const updateMonthFilterAction = createAction('updateMonthFilter');
+export const updateYearFilterAction = createAction('updateYearFilter');

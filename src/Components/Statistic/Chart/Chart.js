@@ -23,10 +23,10 @@ export default function Chart() {
   const dispatch = useDispatch();
   useEffect(() => dispatch(expensesOperations.fetchExpenses()), [dispatch]);
   const consumption = expenses
-    .filter(expense => expense.type === '-')
+    ?.filter(expense => expense.type === '-')
     .map(el => el.category);
   const arrMoney = expenses
-    .filter(expense => expense.type === '-')
+    ?.filter(expense => expense.type === '-')
     .map(el => el.sum);
 
   // рандом
