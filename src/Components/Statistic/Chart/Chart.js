@@ -18,17 +18,24 @@ export default function Chart() {
   const arrColors = transactionsList.map(el => el.color);
   // const expenses = useSelector(expensesSelectors.getExpenses);
   const expenses = useSelector(expensesSelectors.getVisibleExpenses);
-  // const total = useSelector(expensesSelectors.getVisibleTotal);
   const total = useSelector(expensesSelectors.getTotal);
   const dispatch = useDispatch();
   useEffect(() => dispatch(expensesOperations.fetchExpenses()), [dispatch]);
+
   const consumption = expenses
     ?.filter(expense => expense.type === '-')
-    .map(el => el.category);
-  const arrMoney = expenses
-    ?.filter(expense => expense.type === '-')
-    .map(el => el.sum);
+    ?.reduce((acc, item) => {
+      const spending = acc.find(accItem => accItem?.category === item.category);
+      spending
+        ? (acc[acc.indexOf(spending)].sum += item.sum)
+        : acc.push({ category: item.category, sum: item.sum });
+      return acc;
+    }, []);
 
+  const arrCategory = consumption?.map(el => el.category);
+
+  const arrMoney = consumption?.map(el => el.sum);
+  console.log(arrMoney);
   // рандом
   //   const arrColors = expenses.map(el => {
   //   return (
@@ -49,7 +56,7 @@ export default function Chart() {
         <div className={styles.doughnut}>
           <Doughnut
             data={{
-              labels: consumption,
+              labels: arrCategory,
               datasets: [
                 {
                   label: '# of Votes',

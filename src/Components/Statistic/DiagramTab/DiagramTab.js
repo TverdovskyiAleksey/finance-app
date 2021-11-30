@@ -12,8 +12,17 @@ export default function DiagramTab() {
   // const expenses = useSelector(expensesSelectors.getExpenses);
   const expenses = useSelector(expensesSelectors.getVisibleExpenses);
   const consumption = expenses?.filter(expense => expense.type === '-');
+
+  const consumption1 = consumption?.reduce((acc, item) => {
+    const spending = acc.find(accItem => accItem?.category === item.category);
+    spending
+      ? (acc[acc.indexOf(spending)].sum += item.sum)
+      : acc.push({ category: item.category, sum: item.sum });
+    return acc;
+  }, []);
+
   const income = expenses?.filter(expense => expense.type === '+');
-  const colorConsumption = transactionsList.slice(0, consumption?.length);
+  const colorConsumption = transactionsList.slice(0, consumption1?.length);
 
   const sumConsumption = consumption?.map(el => el.sum).reduce(add, 0);
   const sumIncome = income?.map(el => el.sum).reduce(add, 0);
@@ -45,8 +54,8 @@ export default function DiagramTab() {
         </ul>
 
         <ul className={styles.listTransaction}>
-          {consumption?.length > 0 ? (
-            consumption?.map(item => {
+          {consumption1?.length > 0 ? (
+            consumption1?.map(item => {
               return (
                 <li className={styles.transactionElement} key={item.id}>
                   <div className={styles.category}>{item.category}</div>
