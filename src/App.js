@@ -47,7 +47,7 @@ function App() {
               </PublicRoute>
               <PrivateRoute>
                 <HomeView exact path="/home" redirectTo="/login" restricted />
-              </PrivateRoute >
+              </PrivateRoute>
               <PrivateRoute>
                 <StatisticView exact path="/statistic" />
               </PrivateRoute>
@@ -55,12 +55,11 @@ function App() {
                 <CurrencyView exact path="/currency" />
               </PrivateRoute>
             </Suspense>
-          </Switch >
+          </Switch>
         </>
-      )
-      }
+      )}
       <ToastContainer />
-    </Container >
+    </Container>
   );
 }
 

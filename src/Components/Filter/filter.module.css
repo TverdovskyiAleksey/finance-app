@@ -1,0 +1,32 @@
+.container {
+  display: block;
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.select {
+  width: 280px;
+  height: 50px;
+  border: 1px solid #000000;
+  border-radius: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    display: flex;
+    width: 351px;
+    justify-content: space-between;
+  }
+  .select {
+    width: 166px;
+    height: 50px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}

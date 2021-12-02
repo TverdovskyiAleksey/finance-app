@@ -13,7 +13,7 @@ const Balance = () => {
       <div className={styles.balance}>
         Ваш баланс
         <p className={styles.total}>
-          <span className={styles.currency}>₴</span> {total.toFixed(2)}
+          <span className={styles.currency}>₴</span> {total?.toFixed(2)}
         </p>
       </div>
     </>

@@ -1,4 +1,4 @@
-// import { createAction } from '@reduxjs/toolkit';
+import { createAction } from '@reduxjs/toolkit';
 
 // export const fetchExpenseRequest = createAction('expense/fetchExpenseRequest');
 // export const fetchExpenseSuccess = createAction('expense/fetchExpenseSuccess');
@@ -15,3 +15,6 @@
 //   'expense/deleteExpenseSuccess',
 // );
 // export const deleteExpenseError = createAction('expense/deleteExpenseError');
+
+export const updateMonthFilterAction = createAction('updateMonthFilter');
+export const updateYearFilterAction = createAction('updateYearFilter');
